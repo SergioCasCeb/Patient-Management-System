@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.side-menu .selected::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+}
+
+.user-btn .profile-menu{
+    transform: scaleY(0);
+}
+
+.user-btn .fa-caret-down{
+    transform: rotate(0);
+}
+
+.user-btn.open .profile-menu{
+    transform: scaleY(1);
+}
+
+.user-btn.open .fa-caret-down{
+    transform: rotate(-90deg);
+}
+
