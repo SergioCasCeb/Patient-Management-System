@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="flex flex-row">
-            <div class="sidebar bg-primary-400 py-4 min-h-screen rounded-tr-xl rounded-br-xl group hover:min-w-64 flex flex-col">
+            <div class="sidebar bg-primary-400 py-4 min-h-screen rounded-tr-3xl rounded-br-3xl group hover:min-w-64 flex flex-col">
                 <div class="logo flex justify-start items-center relative mb-20 px-10">
                     <i class="fa-solid fa-globe text-5xl text-secondary-200 rotate-45 z-0"></i>
                     <p class="font-secondary font-thin absolute top-1/2 left-14 -translate-y-1/2 invisible scale-x-0 group-hover:scale-x-100 group-hover:visible transition-transform origin-left duration-300">GloboSoft AG</p>
@@ -24,34 +24,33 @@
                 </div>
                 <div class="side-menu group-hover:w-56 pl-8">
                     <ul class="w-full">
-                        <li class="flex flex-row justify-start items-center py-3 pl-2 w-full mb-4 cursor-pointer relative hover:bg-secondary-400 rounded-lg">
+                        <li class="pat-tab flex flex-row justify-start items-center py-3 pl-2 w-full mb-4 cursor-pointer relative hover:bg-primary-600 rounded-tl-lg rounded-bl-lg overflow-hidden selected">
                             <i class="fa-solid fa-hospital-user mx-3 text-3xl z-10"></i>
                             <p class="text-2xl font-bold invisible w-0 group-hover:w-full group-hover:visible z-10">Patients</p>
-                            <div class="absolute top-0 left-0 w-full h-full bg-light-400 rounded-tl-lg rounded-bl-lg -z-0"></div>
+                            <!--<div class="absolute top-0 left-0 w-full h-full bg-light-400 rounded-tl-lg rounded-bl-lg -z-0"></div>-->
                         </li>
-                        <li class="flex flex-row justify-start items-center py-3 pl-2 w-full cursor-pointer relative hover:bg-primary-600 rounded-tl-lg rounded-bl-lg">
-                            <i class="fa-solid fa-hospital mx-3 text-3xl text-light-400 z-10"></i>
-                            <p class="text-2xl font-bold invisible w-0 text-light-400 group-hover:w-full group-hover:visible z-10">Services</p>
+                        <li class="service-tab flex flex-row justify-start items-center py-3 pl-2 w-full cursor-pointer relative hover:bg-primary-600 rounded-tl-lg rounded-bl-lg overflow-hidden">
+                            <i class="fa-solid fa-hospital mx-3 text-3xl z-10"></i>
+                            <p class="text-2xl font-bold invisible w-0 group-hover:w-full group-hover:visible z-10">Services</p>
                         </li>
-                    </ul>
+                    </ul> 
                 </div>
                 <div class="side-footer">
-
                 </div>
             </div>
+
             <main class="bg-light-400 py-6 px-10 min-h-screen w-full">
                 <div class="header flex justify-between items-center">
                     <h1 class="text-xl pr-5 font-bold md:text-3xl lg:text-4xl">Patient Management System</h1>
-                    <div class="user-btn flex justify-center items-center hover:cursor-pointer relative group">
+                    <div class="user-btn flex justify-center items-center hover:cursor-pointer relative">
                         <i class="fa-solid fa-circle-user text-4xl mr-2"></i>
-                        <i class="fa-solid fa-caret-down text-xl"></i>
+                        <i class="fa-solid fa-caret-down text-xl duration-300"></i>
 
-                        <div class="profile-menu absolute -bottom-32 right-0 bg-dark-200 text-light-400 w-40 py-2 rounded-md scale-y-0 origin-top group-hover:scale-y-100 duration-300">
+                        <div class="profile-menu absolute -bottom-24 right-0 bg-dark-200 text-light-400 w-40 py-2 rounded-md origin-top duration-300">
                             <ul>
-                                <li class="text-sm p-1 hover:bg-dark-400 duration-200"><a href="#" class="w-full inline-block">Personal Information</a></li>
-                                <li class="text-sm p-1 hover:bg-dark-400 duration-200"><a href="./index.html" class="w-full inline-block">Log out</a></li>
+                                <li class="text-sm py-1 px-2 hover:bg-dark-400 duration-200"><a href="#" class="w-full inline-block">Personal Information</a></li>
                                 <hr class="my-1">
-                                <li class="text-sm p-1 hover:bg-dark-400 duration-200"><a href="#" class="w-full inline-block">Close</a></li>
+                                <li class="text-sm py-1 px-2 hover:bg-dark-400 duration-200"><a href="./index.html" class="w-full inline-block">Log out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -225,5 +224,6 @@
         </div>
 
         <script src="https://kit.fontawesome.com/d66d421276.js" crossorigin="anonymous"></script>
+        <script src="./js/dashboard.js"></script>
     </body>
 </html>
