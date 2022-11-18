@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Patient Management System</title>
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+        <link rel="stylesheet" href="./css/output.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="flex flex-row">
+            <div class="sidebar bg-primary-400 py-4 min-h-screen rounded-tr-xl rounded-br-xl group hover:min-w-64 flex flex-col">
+                <div class="logo flex justify-start items-center relative mb-20 px-10">
+                    <i class="fa-solid fa-globe text-5xl text-secondary-200 rotate-45 z-0"></i>
+                    <p class="font-secondary font-thin absolute top-1/2 left-14 -translate-y-1/2 invisible scale-x-0 group-hover:scale-x-100 group-hover:visible transition-transform origin-left duration-300">GloboSoft AG</p>
+                    <!--
+                    <p class="font-secondary font-thin py-2 absolute z-10 hidden group-hover:block transition-all origin-left">GloboSoft AG</p>
+                    -->
+                </div>
+                <div class="side-menu group-hover:w-56 pl-8">
+                    <ul class="w-full">
+                        <li class="flex flex-row justify-start items-center py-3 pl-2 w-full mb-4 cursor-pointer relative hover:bg-secondary-400 rounded-lg">
+                            <i class="fa-solid fa-hospital-user mx-3 text-3xl z-10"></i>
+                            <p class="text-2xl font-bold invisible w-0 group-hover:w-full group-hover:visible z-10">Patients</p>
+                            <div class="absolute top-0 left-0 w-full h-full bg-light-400 rounded-tl-lg rounded-bl-lg -z-0"></div>
+                        </li>
+                        <li class="flex flex-row justify-start items-center py-3 pl-2 w-full cursor-pointer relative hover:bg-primary-600 rounded-tl-lg rounded-bl-lg">
+                            <i class="fa-solid fa-hospital mx-3 text-3xl text-light-400 z-10"></i>
+                            <p class="text-2xl font-bold invisible w-0 text-light-400 group-hover:w-full group-hover:visible z-10">Services</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="side-footer">
+
+                </div>
+            </div>
+            <main class="bg-light-400 py-6 px-10 min-h-screen w-full">
+                <div class="header flex justify-between items-center">
+                    <h1 class="text-xl pr-5 font-bold md:text-3xl lg:text-4xl">Patient Management System</h1>
+                    <div class="user-btn flex justify-center items-center hover:cursor-pointer relative group">
+                        <i class="fa-solid fa-circle-user text-4xl mr-2"></i>
+                        <i class="fa-solid fa-caret-down text-xl"></i>
+
+                        <div class="profile-menu absolute -bottom-32 right-0 bg-dark-200 text-light-400 w-40 py-2 rounded-md scale-y-0 origin-top group-hover:scale-y-100 duration-300">
+                            <ul>
+                                <li class="text-sm p-1 hover:bg-dark-400 duration-200"><a href="#" class="w-full inline-block">Personal Information</a></li>
+                                <li class="text-sm p-1 hover:bg-dark-400 duration-200"><a href="./index.html" class="w-full inline-block">Log out</a></li>
+                                <hr class="my-1">
+                                <li class="text-sm p-1 hover:bg-dark-400 duration-200"><a href="#" class="w-full inline-block">Close</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--End of header-->
+
+                
+                <div class="patient-main mt-24">
+                    <h2 class="text-3xl font-bold text-center mb-20">Patients List</h2>
+
+                    <div class="patient-btns flex flex-col md:flex-row">
+                        <div class="new-pat-btn mr-5 mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit active:bg-dark-800 group">
+                            <i class="fa-solid fa-user-plus py-1 px-3 group-active:text-light-400"></i>
+                            <button class="py-1 pr-3 w-full md:w-fit group-active:text-light-400">Add new patient</button>
+                        </div>
+
+                        <div class="filter-options mr-5 mb-2 rounded-md border-2 border-dark-800 flex flex-row items-center justify-center w-full md:w-fit overflow-hidden">
+                            <i class="fa-solid fa-filter pl-3 py-1 mr-2"></i>
+                            <select name="filter" id="filter-btn" class="py-1 pr-3 bg-light-400 cursor-pointer w-full">
+                                <option value="" selected disabled>Filter by</option>
+                                <option value="pat-id">Patient Id</option>
+                                <option value="pat-name">Name</option>
+                                <option value="pat-insurance">Insurance type</option>
+                                <option value="pat-service">Service</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-filter mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit overflow-hidden">
+                            <i class="fa-solid fa-magnifying-glass py-1 px-3"></i>
+                            <input type="text" name="" id="" class="bg-light-400 w-10/12 focus:outline-none">
+                        </div>
+                    </div>
+                    <!--Patient btn section-->
+
+                    <table class="w-full table-auto table-patients border-separate border-spacing-y-5 mt-10">
+                        <thead class="text-center">
+                            <tr>
+                                <th class="rounded-l-lg bg-secondary-200 p-3">Pat. Id</th>
+                                <th class="bg-secondary-200 p-3">Full Name</th>
+                                <th class="bg-secondary-200 p-3">Insurance</th>
+                                <th class="bg-secondary-200 p-3">Service</th>
+                                <th class="bg-secondary-200 p-3">Edit / Delete</th>
+                                <th class="rounded-r-lg bg-secondary-200 p-3">Profile</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-center">
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Private</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">3</td>
+                                <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                </td>
+                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
+                                    <button>See Profile</button>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Private</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">3</td>
+                                <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                </td>
+                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
+                                    <button>See Profile</button>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Private</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">3</td>
+                                <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                </td>
+                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
+                                    <button>See Profile</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--End of Patient section-->
+
+
+
+                <div class="service-main mt-24 hidden">
+                    <h2 class="text-3xl font-bold text-center mb-20">Services List</h2>
+
+                    <div class="service-btns flex flex-col md:flex-row">
+                        <div class="new-service-btn mr-5 mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit active:bg-dark-800 group">
+                            <i class="fa-solid fa-book-medical py-1 px-3 text-lg group-active:text-light-400"></i>
+                            <button class="py-1 pr-3 w-full md:w-fit group-active:text-light-400">Add new Service</button>
+                        </div>
+
+                        <div class="filter-options mr-5 mb-2 rounded-md border-2 border-dark-800 flex flex-row items-center justify-center w-full md:w-fit overflow-hidden">
+                            <i class="fa-solid fa-filter pl-3 py-1 mr-2 text-lg"></i>
+                            <select name="filter" id="filter-btn" class="py-1 pr-3 bg-light-400 cursor-pointer w-full">
+                                <option value="" selected disabled>Filter by</option>
+                                <option value="service-id">Service Id</option>
+                                <option value="service-name">Service Name</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-filter mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit overflow-hidden">
+                            <i class="fa-solid fa-magnifying-glass py-1 px-3"></i>
+                            <input type="text" name="service-input" id="" class="bg-light-400 w-10/12 focus:outline-none">
+                        </div>
+                    </div>
+                    <!--service btn section-->
+
+                    <table class="w-full table-auto table-services border-separate border-spacing-y-5 mt-10">
+                        <thead class="text-center">
+                            <tr>
+                                <th class="rounded-l-lg bg-secondary-200 p-3">Service. Id</th>
+                                <th class="bg-secondary-200 p-3">Name</th>
+                                <th class="bg-secondary-200 p-3">Private Price</th>
+                                <th class="bg-secondary-200 p-3">PV Price</th>
+                                <th class="bg-secondary-200 p-3">Edit / Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-center">
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Blood preasure measurement</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">25</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">20</td>
+                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Blood preasure measurement</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">25</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">20</td>
+                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">Blood preasure measurement</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">25</td>
+                                <td class="border-y-2 border-gray-blue-400 py-2">20</td>
+                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--End of service section-->
+
+            </main>
+        </div>
+
+        <script src="https://kit.fontawesome.com/d66d421276.js" crossorigin="anonymous"></script>
+    </body>
+</html>

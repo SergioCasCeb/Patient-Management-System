@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Management System</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Patient Management System</title>
 
-    <link rel="stylesheet" href="./css/output.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"> 
-</head>
-<body>
-    <main class="bg-primary w-screen h-screen flex justify-center items-center">
-        <div class="container mx-auto px-6 flex flex-col justify-center items-center min-h-full">
-            <div class="log-in-screen p-2 bg-light min-w-full md:min-w-2/3 lg:min-w-1/2 h-72 flex flex-col justify-center items-center rounded-lg relative z-0">
-                <div class="log-in-icon w-40 h-40 rounded-full bg-light flex justify-center items-center border-8 border-primary absolute -top-20 left-1/2 -translate-x-20 z-10">
-                    <i class="fa-solid fa-user-doctor text-8xl text-gray"></i>
+        <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+        <link rel="stylesheet" href="./css/output.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <main class="bg-primary-400 w-screen h-screen flex justify-center items-center">
+            <div class="container mx-auto px-6 flex flex-col justify-center items-center min-h-full">
+                <div class="log-in-screen p-2 bg-light-400 min-w-full md:min-w-2/3 lg:min-w-1/2 h-72 flex flex-col justify-center items-center rounded-lg relative z-0">
+                    <div class="log-in-icon w-40 h-40 rounded-full bg-light-400 flex justify-center items-center border-8 border-primary-400 absolute -top-20 left-1/2 -translate-x-20 z-10">
+                        <i class="fa-solid fa-user-doctor text-8xl text-dark-200"></i>
+                    </div>
+                    <form class="log-in-form flex flex-col justify-center items-center w-1/2 pt-24 pb-8">
+                        <p class="error-u-p mb-1 text-xs text-left w-full hidden text-dark-200 px-1">* Please input a proper username and password</p>
+                        <p class="error-u mb-1 text-xs text-left w-full hidden text-dark-200 px-1">* The username is incorrect</p>
+                        <input class="w-full mb-4 bg-light px-2 py-1 rounded-md border-2 border-gray-blue-400 font-secondary" type="text" name="username" placeholder="Username" required>
+                        <p class="error-p mb-1 text-xs text-left w-full hidden text-dark-200 px-1">* The password does not match the username</p>
+                        <input class="w-full mb-4 bg-light px-2 py-1 rounded-md border-2 border-gray-blue-400 font-secondary" type="password" name="password" placeholder="Password" required>
+                        <button type="submit" class="bg-secondary-400 text-dark px-6 py-2 rounded-md font-bold hover:bg-secondary-600 transition duration-300">Log In</button>
+                    </form>
                 </div>
-                <form class="log-in-form flex flex-col justify-center items-center w-1/2 mt-14">
-                    <input class="w-full mb-4 bg-light px-2 py-1 rounded-md border-2 border-gray-blue font-secondary" type="text" name="username" placeholder="Username">
-                    <input class="w-full mb-4 bg-light px-2 py-1 rounded-md border-2 border-gray-blue font-secondary" type="password" name="password" placeholder="Password">
-                    <button type="submit" class="bg-secondary-400 text-dark px-6 py-2 rounded-md font-bold hover:bg-secondary-600 transition duration-300">Log In</button>
-                </form>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <script src="https://kit.fontawesome.com/d66d421276.js" crossorigin="anonymous"></script>
-</body>
+        <script src="https://kit.fontawesome.com/d66d421276.js" crossorigin="anonymous"></script>
+        <!--Main js-->
+        <script src="./js/main.js"></script>
+    </body>
 </html>
-
-<!--bg-light flex justify-center items-center flex-col min-w-full md:min-w-1/2 h-1/3 rounded-lg-->
