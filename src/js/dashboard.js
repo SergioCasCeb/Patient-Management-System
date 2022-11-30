@@ -33,20 +33,28 @@ serviceTab.addEventListener("click", () => {
 const tablePatients = document.querySelector(".table-patients tbody");
 const searchPatient = document.querySelector(".search-patient input");
 const filterPatient = document.querySelector(".filter-patient select");
-console.log(tablePatients);
-console.log(searchPatient);
-console.log(filterPatient);
+const noResultsMsg = document.querySelector(".table-patients .no-results");
 loadPatients();
+
+function returnPatDefault(){
+    const rows = tablePatients.querySelectorAll('tr:not(tr.no-results)');
+    searchPatient.value = '';
+    noResultsMsg.classList.add("hidden");
+    rows.forEach(row => {
+        row.classList.add("shown");
+        row.style.display = 'table-row';
+    })
+}
 //Function to load patients table
 function loadPatients() {
-    console.log("the patients have loaded");
+    //console.log("the patients have loaded");
+    filterPatient.options[0].selected= true;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'patients.json', true);
-
     xhr.onload = function() {
         if(this.status == 200){
             var patients = JSON.parse(this.responseText);
-            console.log(patients);
+            //console.log(patients);
             for(var i in patients){
                 let tr = document.createElement("tr");
                 tr.classList.add("hover:shadow-gray-blue-200", "hover:shadow-md", "duration-300", "rounded-lg");
@@ -67,79 +75,33 @@ function loadPatients() {
             }
         }
 
-        const rows = tablePatients.querySelectorAll('tr');
-        console.log(rows);
+        const rows = tablePatients.querySelectorAll('tr:not(tr.no-results)');
 
         filterPatient.addEventListener("change", () => {
-            console.log(filerPatient.options);
+            var filterVal = filterPatient.options[filterPatient.selectedIndex].value;
+            returnPatDefault();
+            searchPatient.addEventListener("keyup", () => {
+                var value = searchPatient.value.toLowerCase();
+                rows.forEach(row => {
+                    if(row.querySelector(`td:nth-child(${filterVal})`).textContent.toLowerCase().includes(value)){
+                        row.classList.add("shown");
+                        row.style.display = 'table-row';
+                    }
+                    else{
+                        row.style.display = 'none';
+                        row.classList.remove("shown");
+                    }
+                });
+
+                let shownRows = document.querySelectorAll(".table-patients tbody .shown");
+                if(shownRows.length == 0){
+                    noResultsMsg.classList.remove("hidden");
+                }
+                else{
+                    noResultsMsg.classList.add("hidden");
+                }
+            }) 
         })
-
-        searchPatient.addEventListener("keyup", () => {
-            var value = searchPatient.value.toLowerCase();
-            console.log(value);
-
-            rows.forEach(row => {
-                row.querySelector('td:nth-child(2)').textContent.toLowerCase().includes(value) ? row.style.display = 'table-row' : row.style.display = 'none';
-            });
-        })
-        
-    }
-
-    xhr.send();
-
-    /*
-    searchPatient.on('keyup', function() {
-            var value = $(this).val().toLowerCase();
-            console.log(value);
-
-            rows.forEach(row => {
-                row.querySelector('td:nth-child(2)').textContent.toLowerCase().includes(value) ? row.style.display = 'table-row' : row.style.display = 'none';
-            });
-
-        });*/
-
-
-    /*
-    xhr.onload = function() {
-        if (this.status == 200) {
-            $(".body-patient-table tr").remove();
-            //alert("The patient database has loaded successfully")
-            var patients = JSON.parse(this.responseText);
-            console.log(patients);
-
-            for (var i in patients) {
-
-                $('.body-patient-table').append(`
-                <tr>
-                    <td>${patients[i].id}</td>
-                    <td>${patients[i].fname}</td>
-                    <td>${patients[i].lname}</td>
-                    <td>${patients[i].gender}</td>
-                    <td>${patients[i].bdate}</td>
-                    <td>${patients[i].address}</td>
-                    <td>${patients[i].insurance}</td>
-                    <td>${patients[i].service}</td>
-                    <td><div><i class="fas fa-edit edit-pat-btn mr-3"></i> <i class="fas fa-trash-alt delete-pat-btn ml-3"></i></div></td>
-                    <td><button type="button" class="btn btn-outline-secondary show-profile ${patients[i].fname+patients[i].id}">See Profile</button></td>
-                </tr>
-                `);
-            }
-
-        }
-
-        const rows = document.querySelectorAll('tbody.body-patient-table tr');
-
-        $('.search-patient').on('keyup', function() {
-            var value = $(this).val().toLowerCase();
-            console.log(value);
-
-            rows.forEach(row => {
-                row.querySelector('td:nth-child(2)').textContent.toLowerCase().includes(value) ? row.style.display = 'table-row' : row.style.display = 'none';
-            });
-
-        });
-
     }
     xhr.send();
-    */
 }

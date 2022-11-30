@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="flex flex-row">
-            <div class="sidebar bg-primary-400 py-4 min-h-screen rounded-tr-3xl rounded-br-3xl group hover:min-w-64 flex flex-col">
+            <div class="sidebar bg-primary-400 py-4 min-h-screen max-h-screen rounded-tr-3xl rounded-br-3xl group hover:min-w-64 flex flex-col">
                 <div class="logo flex justify-start items-center relative mb-20 px-10">
                     <i class="fa-solid fa-globe text-5xl text-secondary-200 rotate-45 z-0"></i>
                     <p class="font-secondary font-thin absolute top-1/2 left-14 -translate-y-1/2 invisible scale-x-0 group-hover:scale-x-100 group-hover:visible transition-transform origin-left duration-300">GloboSoft AG</p>
@@ -70,11 +70,11 @@
                         <div class="filter-patient mr-5 mb-2 rounded-md border-2 border-dark-800 flex flex-row items-center justify-center w-full md:w-fit overflow-hidden">
                             <i class="fa-solid fa-filter pl-3 py-1 mr-2"></i>
                             <select name="filter" id="filter-btn" class="py-1 pr-3 bg-light-400 cursor-pointer w-full">
-                                <option value="" selected disabled>Filter by</option>
-                                <option value="pat-id">Patient Id</option>
-                                <option value="pat-name">Name</option>
-                                <option value="pat-insurance">Insurance type</option>
-                                <option value="pat-service">Service</option>
+                                <option value="0" selected disabled>Filter by</option>
+                                <option value="1">Patient Id</option>
+                                <option value="2">Name</option>
+                                <option value="3">Insurance type</option>
+                                <option value="4">Service</option>
                             </select>
                         </div>
                         
@@ -98,6 +98,9 @@
                         </thead>
 
                         <tbody class="text-center">
+                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg no-results hidden">
+                                <td colspan="6" class="border-y-2 border-2 rounded-lg border-gray-blue-400 py-2">No results where found!</td>
+                            </tr>
                             <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg">
                                 <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">0</td>
                                 <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
