@@ -1,0 +1,32 @@
+[
+  {
+    "idSer": 1,
+    "name": "Blood preasure measurement",
+    "privatePrice": 20,
+    "pvPrice": 25
+  },
+  {
+    "idSer": 2,
+    "name": "Cholesterol measurement",
+    "privatePrice": 30,
+    "pvPrice": 35
+  },
+  {
+    "idSer": 3,
+    "name": "General check-up",
+    "privatePrice": 50,
+    "pvPrice": 55
+  },
+  {
+    "idSer": 4,
+    "name": "Somehting service",
+    "privatePrice": 30,
+    "pvPrice": 35
+  },
+  {
+    "idSer": 5,
+    "name": "Another service",
+    "privatePrice": 50,
+    "pvPrice": 55
+  }
+]
