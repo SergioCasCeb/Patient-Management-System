@@ -29,11 +29,17 @@ serviceTab.addEventListener("click", () => {
     
 })
 
-/**** Main functionality ****/
+/**** Main functionality patient section****/
 const tablePatients = document.querySelector(".table-patients tbody");
 const searchPatient = document.querySelector(".search-patient input");
 const filterPatient = document.querySelector(".filter-patient select");
 const noResultsMsg = document.querySelector(".table-patients .no-results");
+const newPatForm = document.querySelector(".new-pat-form");
+const submitBtnPat = newPatForm.querySelector(".submit-btn");
+const cancelBtnPat = newPatForm.querySelector(".cancel-btn");
+const newPatBtn = document.querySelector(".new-pat-btn");
+
+
 loadPatients();
 
 function returnPatDefault(){
@@ -105,3 +111,10 @@ function loadPatients() {
     }
     xhr.send();
 }
+
+cancelBtnPat.addEventListener("click", () => {
+    newPatForm.classList.add("hidden");
+})
+newPatBtn.addEventListener("click", () => {
+    newPatForm.classList.remove("hidden");
+})

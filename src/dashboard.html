@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="flex flex-row">
-            <div class="sidebar bg-primary-400 py-4 min-h-screen max-h-screen rounded-tr-3xl rounded-br-3xl group hover:min-w-64 flex flex-col">
+            <div class="sidebar bg-primary-400 py-4 min-h-screen rounded-tr-3xl rounded-br-3xl group hover:min-w-64 flex flex-col">
                 <div class="logo flex justify-start items-center relative mb-20 px-10">
                     <i class="fa-solid fa-globe text-5xl text-secondary-200 rotate-45 z-0"></i>
                     <p class="font-secondary font-thin absolute top-1/2 left-14 -translate-y-1/2 invisible scale-x-0 group-hover:scale-x-100 group-hover:visible transition-transform origin-left duration-300">GloboSoft AG</p>
@@ -61,10 +61,10 @@
                 <div class="patient-main mt-24">
                     <h2 class="text-3xl font-bold text-center mb-20">Patients List</h2>
 
-                    <div class="patient-btns flex flex-col md:flex-row">
+                    <div class="patient-btns flex flex-col md:flex-row mb-10">
                         <div class="new-pat-btn mr-5 mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit active:bg-dark-800 group">
                             <i class="fa-solid fa-user-plus py-1 px-3 group-active:text-light-400"></i>
-                            <button class="py-1 pr-3 w-full md:w-fit group-active:text-light-400">Add new patient</button>
+                            <button class="new-pat-btn py-1 pr-3 w-full md:w-fit group-active:text-light-400">Add new patient</button>
                         </div>
 
                         <div class="filter-patient mr-5 mb-2 rounded-md border-2 border-dark-800 flex flex-row items-center justify-center w-full md:w-fit overflow-hidden">
@@ -85,37 +85,74 @@
                     </div>
                     <!--Patient btn section-->
 
-                    <table class="w-full table-auto table-patients border-separate border-spacing-y-5 mt-10">
-                        <thead class="text-center">
-                            <tr>
-                                <th class="rounded-l-lg bg-secondary-200 p-3">Pat. Id</th>
-                                <th class="bg-secondary-200 p-3">Full Name</th>
-                                <th class="bg-secondary-200 p-3">Insurance</th>
-                                <th class="bg-secondary-200 p-3">Service</th>
-                                <th class="bg-secondary-200 p-3">Edit / Delete</th>
-                                <th class="rounded-r-lg bg-secondary-200 p-3">Profile</th>
-                            </tr>
-                        </thead>
+                    <form action="#" class="new-pat-form my-10 hidden">
+                        <fieldset class="p-3 border-2 border-dark-400 rounded-md flex flex-row items-center justify-between flex-wrap">
+                            <legend class="font-bold px-2">New Patient</legend>
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="firstName" id="" placeholder="First Name">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="lastName" id="" placeholder="Last Name">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="gender" id="">
+                                <option value="" selected disabled>Gender</option>
+                                <option value="">Male</option>
+                                <option value="">Female</option>
+                            </select>
+                            <input class="mb-2 cursor-pointer rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" type="date" name="dateBirth" id="">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="insuranceType" id="">
+                                <option value="" selected disabled>Insurance Type</option>
+                                <option value="">Private</option>
+                                <option value="">PV</option>
+                            </select>
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="service" id="">
+                                <option value="" selected disabled>Service</option>
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                                <option value="">5</option>
+                            </select>
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-full" type="text" name="address" id="" placeholder="Address">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="phoneNum" id="" placeholder="Phone Number">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="email" name="email" id="" placeholder="Email">
 
-                        <tbody class="text-center">
-                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg no-results hidden">
-                                <td colspan="6" class="border-y-2 border-2 rounded-lg border-gray-blue-400 py-2">No results where found!</td>
-                            </tr>
-                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg">
-                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">0</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">Private</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">3</td>
-                                <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                </td>
-                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
-                                    <button>See Profile</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <div class="btn-container w-full flex flex-row items-center justify-center mt-5">
+                                <button class="submit-btn mb-2 rounded-md border-2 border-dark-800 py-1 px-3 mr-6 w-4/12 active:bg-dark-800 active:text-light-400" type="submit"><i class="fa-solid fa-check mr-2"></i>Submit</button>
+                                <button class="cancel-btn mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-4/12 active:bg-dark-800 active:text-light-400" type="reset"><i class="fa-solid fa-xmark mr-2"></i>Cancel</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <div class="table-pat-container max-h-[440px] overflow-scroll pr-2">
+                        <table class="w-full table-auto table-patients border-separate border-spacing-y-5">
+                            <thead class="text-center">
+                                <tr>
+                                    <th class="rounded-l-lg bg-secondary-200 p-3">Pat. Id</th>
+                                    <th class="bg-secondary-200 p-3">Full Name</th>
+                                    <th class="bg-secondary-200 p-3">Insurance</th>
+                                    <th class="bg-secondary-200 p-3">Service</th>
+                                    <th class="bg-secondary-200 p-3">Edit / Delete</th>
+                                    <th class="rounded-r-lg bg-secondary-200 p-3">Profile</th>
+                                </tr>
+                            </thead>
+    
+                            <tbody class="text-center">
+                                <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg no-results hidden">
+                                    <td colspan="6" class="border-y-2 border-2 rounded-lg border-gray-blue-400 py-2">No results where found!</td>
+                                </tr>
+                                <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg">
+                                    <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">0</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">Private</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">3</td>
+                                    <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                        <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                        <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    </td>
+                                    <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
+                                        <button>See Profile</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!--End of Patient section-->
 
