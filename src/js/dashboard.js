@@ -26,8 +26,8 @@ const searchPatient = document.querySelector(".search-patient input");
 const filterPatient = document.querySelector(".filter-patient select");
 const noResultsMsg = document.querySelector(".table-patients .no-results");
 const newPatForm = document.querySelector(".new-pat-form");
-const submitBtnPat = newPatForm.querySelector(".submit-btn");
-const cancelBtnPat = newPatForm.querySelector(".cancel-btn");
+const submitBtnPat = newPatForm.querySelector(".new-pat-form .submit-btn");
+const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
 
 loadPatients();
@@ -122,10 +122,10 @@ const tableServices = document.querySelector(".table-services tbody");
 const searchService = document.querySelector(".search-service input");
 const filterService = document.querySelector(".filter-service select");
 const noResultsSer = document.querySelector(".table-services .no-results");
-//const newPatForm = document.querySelector(".new-pat-form");
-//const submitBtnPat = newPatForm.querySelector(".submit-btn");
-//const cancelBtnPat = newPatForm.querySelector(".cancel-btn");
-//const newPatBtn = document.querySelector(".new-pat-btn");
+const newSerForm = document.querySelector(".new-ser-form");
+const submitBtnSer = newSerForm.querySelector(".submit-btn");
+const cancelBtnSer = newSerForm.querySelector(".cancel-btn");
+const newSerBtn = document.querySelector(".new-service-btn");
 
 //Open and show the services tab
 serviceTab.addEventListener("click", () => {
@@ -204,3 +204,11 @@ function loadServices() {
     }
     xhr.send();
 }
+
+
+cancelBtnSer.addEventListener("click", () => {
+    newSerForm.classList.add("hidden");
+})
+newSerBtn.addEventListener("click", () => {
+    newSerForm.classList.remove("hidden");
+})
