@@ -80,7 +80,7 @@
                         
                         <div class="search-patient mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit overflow-hidden">
                             <i class="fa-solid fa-magnifying-glass py-1 px-3"></i>
-                            <input type="text" name="" id="" class="bg-light-400 w-10/12 focus:outline-none">
+                            <input type="text" name="" id="" class="bg-light-400 w-10/12 focus:outline-none disabled:hidden">
                         </div>
                     </div>
                     <!--Patient btn section-->
@@ -161,74 +161,57 @@
                 <div class="service-main mt-24 hidden">
                     <h2 class="text-3xl font-bold text-center mb-20">Services List</h2>
 
-                    <div class="service-btns flex flex-col md:flex-row">
+                    <div class="service-btns flex flex-col md:flex-row mb-10">
                         <div class="new-service-btn mr-5 mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit active:bg-dark-800 group">
                             <i class="fa-solid fa-book-medical py-1 px-3 text-lg group-active:text-light-400"></i>
                             <button class="py-1 pr-3 w-full md:w-fit group-active:text-light-400">Add new Service</button>
                         </div>
 
-                        <div class="filter-options mr-5 mb-2 rounded-md border-2 border-dark-800 flex flex-row items-center justify-center w-full md:w-fit overflow-hidden">
+                        <div class="filter-service mr-5 mb-2 rounded-md border-2 border-dark-800 flex flex-row items-center justify-center w-full md:w-fit overflow-hidden">
                             <i class="fa-solid fa-filter pl-3 py-1 mr-2 text-lg"></i>
                             <select name="filter" id="filter-btn" class="py-1 pr-3 bg-light-400 cursor-pointer w-full">
-                                <option value="" selected disabled>Filter by</option>
-                                <option value="service-id">Service Id</option>
-                                <option value="service-name">Service Name</option>
+                                <option value="0" selected disabled>Filter by</option>
+                                <option value="1">Service Id</option>
+                                <option value="2">Service Name</option>
                             </select>
                         </div>
                         
-                        <div class="search-filter mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit overflow-hidden">
+                        <div class="search-service mb-2 rounded-md border-2 border-dark-800 w-full flex flex-row items-center justify-center md:w-fit overflow-hidden">
                             <i class="fa-solid fa-magnifying-glass py-1 px-3"></i>
-                            <input type="text" name="service-input" id="" class="bg-light-400 w-10/12 focus:outline-none">
+                            <input type="text" name="service-input" id="" class="bg-light-400 w-10/12 focus:outline-none disabled:hidden">
                         </div>
                     </div>
                     <!--service btn section-->
 
-                    <table class="w-full table-auto table-services border-separate border-spacing-y-5 mt-10">
-                        <thead class="text-center">
-                            <tr>
-                                <th class="rounded-l-lg bg-secondary-200 p-3">Service. Id</th>
-                                <th class="bg-secondary-200 p-3">Name</th>
-                                <th class="bg-secondary-200 p-3">Private Price</th>
-                                <th class="bg-secondary-200 p-3">PV Price</th>
-                                <th class="bg-secondary-200 p-3">Edit / Delete</th>
-                            </tr>
-                        </thead>
+                    <div class="table-service-container max-h-[440px] overflow-scroll pr-2">
+                        <table class="w-full table-auto table-services border-separate border-spacing-y-5">
+                            <thead class="text-center">
+                                <tr>
+                                    <th class="rounded-l-lg bg-secondary-200 p-3">Service. Id</th>
+                                    <th class="bg-secondary-200 p-3">Name</th>
+                                    <th class="bg-secondary-200 p-3">Private Price</th>
+                                    <th class="bg-secondary-200 p-3">PV Price</th>
+                                    <th class="rounded-r-lg bg-secondary-200 p-3">Edit / Delete</th>
+                                </tr>
+                            </thead>
 
-                        <tbody class="text-center">
-                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
-                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">Blood preasure measurement</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">25</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">20</td>
-                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                </td>
-                            </tr>
-
-                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
-                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">Blood preasure measurement</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">25</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">20</td>
-                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                </td>
-                            </tr>
-
-                            <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
-                                <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">1</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">Blood preasure measurement</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">25</td>
-                                <td class="border-y-2 border-gray-blue-400 py-2">20</td>
-                                <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <tbody class="text-center">
+                                <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg no-results hidden">
+                                    <td colspan="5" class="border-y-2 border-2 rounded-lg border-gray-blue-400 py-2">No results where found!</td>
+                                </tr>
+                                <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
+                                    <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">0</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">Blood sugar level measurement</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">35</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">30</td>
+                                    <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
+                                        <button class="mr-2 group"><i class="fa-solid fa-file-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                        <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!--End of service section-->
 
