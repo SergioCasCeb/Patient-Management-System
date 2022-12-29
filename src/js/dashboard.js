@@ -13,6 +13,10 @@ const patientTab = document.querySelector(".pat-tab");
 const patientSection = document.querySelector(".patient-main");
 
 patientTab.addEventListener("click", () => {
+    const rowsPat = tablePatients.querySelectorAll('tr:not(tr.no-results)');
+    rowsPat.forEach(row => {
+        row.remove();
+    });
     patientTab.classList.add("selected");
     serviceTab.classList.remove("selected");
     patientSection.classList.remove("hidden");
@@ -29,7 +33,6 @@ const newPatForm = document.querySelector(".new-pat-form");
 const submitBtnPat = newPatForm.querySelector(".new-pat-form .submit-btn");
 const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
-
 loadPatients();
 
 function returnPatDefault(){
@@ -55,6 +58,7 @@ function loadPatients() {
             for(var i in patients){
                 let tr = document.createElement("tr");
                 tr.classList.add("hover:shadow-gray-blue-200", "hover:shadow-md", "duration-300", "rounded-lg");
+                tr.setAttribute("id","patient-row");
                 tr.innerHTML = `
                 <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">${patients[i].id}</td>
                 <td class="border-y-2 border-gray-blue-400 py-2">${patients[i].fname + " " + patients[i].lname}</td>
@@ -129,6 +133,10 @@ const newSerBtn = document.querySelector(".new-service-btn");
 
 //Open and show the services tab
 serviceTab.addEventListener("click", () => {
+    const rowsSer = tableServices.querySelectorAll('tr:not(tr.no-results)');
+    rowsSer.forEach(row => {
+        row.remove();
+    });
     serviceTab.classList.add("selected");
     patientTab.classList.remove("selected");
     serviceSection.classList.remove("hidden");
