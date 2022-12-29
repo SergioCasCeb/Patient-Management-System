@@ -88,30 +88,30 @@
                     <form action="#" class="new-pat-form my-10 hidden">
                         <fieldset class="p-3 border-2 border-dark-400 rounded-md flex flex-row items-center justify-between flex-wrap">
                             <legend class="font-bold px-2">New Patient</legend>
-                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="firstName" id="" placeholder="First Name">
-                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="lastName" id="" placeholder="Last Name">
-                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="gender" id="">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="firstName" id="patFirstName" placeholder="First Name">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="lastName" id="patLastName" placeholder="Last Name">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="patgGender" id="patGender">
                                 <option value="" selected disabled>Gender</option>
-                                <option value="">Male</option>
-                                <option value="">Female</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
-                            <input class="mb-2 cursor-pointer rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" type="date" name="dateBirth" id="">
-                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="insuranceType" id="">
+                            <input class="mb-2 cursor-pointer rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" type="date" name="dateBirth" id="dateBirth">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="insuranceType" id="insuranceType">
                                 <option value="" selected disabled>Insurance Type</option>
-                                <option value="">Private</option>
-                                <option value="">PV</option>
+                                <option value="private">Private</option>
+                                <option value="pv">PV</option>
                             </select>
-                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="service" id="">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="serviceNum" id="serviceNum">
                                 <option value="" selected disabled>Service</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                                <option value="">5</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
-                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-full" type="text" name="address" id="" placeholder="Address">
-                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="phoneNum" id="" placeholder="Phone Number">
-                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="email" name="email" id="" placeholder="Email">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-full" type="text" name="patAddress" id="patAddress" placeholder="Address">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="patPhoneNum" id="patPhoneNum" placeholder="Phone Number">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="email" name="patEmail" id="patEmail" placeholder="Email">
 
                             <div class="btn-container w-full flex flex-row items-center justify-center mt-5">
                                 <button class="submit-btn mb-2 rounded-md bg-success-400 text-light-400 py-1 px-3 mr-6 w-4/12 hover:bg-success-600 duration-300" type="submit"><i class="fa-solid fa-check mr-2"></i>Submit</button>
@@ -234,5 +234,6 @@
 
         <script src="https://kit.fontawesome.com/d66d421276.js" crossorigin="anonymous"></script>
         <script src="./js/dashboard.js"></script>
+        <script src="./js/main-pat.js"></script>
     </body>
 </html>

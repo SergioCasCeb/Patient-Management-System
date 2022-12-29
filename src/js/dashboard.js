@@ -30,7 +30,6 @@ const searchPatient = document.querySelector(".search-patient input");
 const filterPatient = document.querySelector(".filter-patient select");
 const noResultsMsg = document.querySelector(".table-patients .no-results");
 const newPatForm = document.querySelector(".new-pat-form");
-const submitBtnPat = newPatForm.querySelector(".new-pat-form .submit-btn");
 const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
 loadPatients();

@@ -8,6 +8,7 @@
     "insurance": "private",
     "service": 2,
     "address": "Schachinger Weg 8",
+    "phoneNum": "01746083746",
     "mail": "serghiocas@gmail.com"
   },
   {
@@ -19,6 +20,7 @@
     "insurance": "pv",
     "service": 4,
     "address": "Schachinger Weg 10",
+    "phoneNum": "01746083746",
     "mail": "marymoe@gmail.com"
   },
   {
@@ -30,6 +32,7 @@
     "insurance": "pv",
     "service": 1,
     "address": "Detterstrasse 24",
+    "phoneNum": "01746083746",
     "mail": "julydooley@gmail.com"
   },
   {
@@ -41,6 +44,7 @@
     "insurance": "private",
     "service": "2",
     "address": "schaching weg",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
@@ -52,6 +56,7 @@
     "insurance": "private",
     "service": "2",
     "address": "sergio address",
+    "phoneNum": "01746083746",
     "mail": "address@gmail.com"
   },
   {
@@ -63,6 +68,7 @@
     "insurance": "private",
     "service": "2",
     "address": "kljlakjf",
+    "phoneNum": "01746083746",
     "mail": "new@gmail.com"
   },
   {
@@ -74,6 +80,7 @@
     "insurance": "private",
     "service": "1",
     "address": "jajs",
+    "phoneNum": "01746083746",
     "mail": "new@gmail.com"
   }
 ]
