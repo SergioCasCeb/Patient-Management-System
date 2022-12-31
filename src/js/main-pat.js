@@ -1,15 +1,29 @@
 URLP = 'http://localhost:3000/patients';
 
 newPatForm.addEventListener("submit", (e) => {
+    //Preventing the default behaviour of the submit listener
     e.preventDefault();
-    let patFName = document.querySelector("#patFirstName").value;
-    let patLName = document.querySelector("#patLastName").value;
-    let patGender = document.querySelector("#patGender").value;
-    let patInsurance = document.querySelector("#insuranceType").value;
-    let patService = document.querySelector("#serviceNum").value;
-    let patAddress = document.querySelector("#patAddress").value;
-    let patPhone = document.querySelector("#patPhoneNum").value;
-    let patMail = document.querySelector("#patEmail").value;
+
+    //Getting all the inputs
+    const patFName = document.querySelector("#patFirstName");
+    const patLName = document.querySelector("#patLastName");
+    const patGender = document.querySelector("#patGender");
+    const patInsurance = document.querySelector("#insuranceType");
+    const patService = document.querySelector("#serviceNum");
+    const patAddress = document.querySelector("#patAddress");
+    const patPhone = document.querySelector("#patPhoneNum");
+    const patMail = document.querySelector("#patEmail");
+
+    //Input values
+    let patFNameValue = patFName.value;
+    let patLNameValue = patLName.value;
+    let patGenderValue = patGender.value;
+    let patInsuranceValue = patInsurance.value;
+    let patServiceValue = patService.value;
+    let patAddressValue = patAddress.value;
+    let patPhoneValue = patPhone.value;
+    let patMailValue = patMail.value;
+
     //Getting the date and setting the format to dd.mm.yy
     let patDate = new Date(document.querySelector("#dateBirth").value);
     let day = patDate.getDate();
@@ -17,124 +31,59 @@ newPatForm.addEventListener("submit", (e) => {
     let year = patDate.getFullYear();
     let fullDate = day + "." + month + "." + year;
 
-    if (patFName == "" || patLName == "" || patGender == "" || patDate == "" || patInsurance == "" || patService == "" || patAddress == "" || patPhone == "" || patMail == ""){
+    //Getting the last all the patients rows
+    let amountTr = tablePatients.querySelectorAll('tr:not(tr.no-results)');
+
+    //Getting the last row of the patients
+    let lastTr = amountTr[amountTr.length - 1];
+
+    //Getting the id of the last patient row
+    let lastId = parseInt(lastTr.firstElementChild.innerHTML);
+
+    //Incrementing the id by one
+    lastId++;
+
+    //function to reset form
+    function resetPatForm(){
+        patFName.value = "";
+        patLName.value = "";
+        patGender.value = "";
+        patDate.value = "";
+        patInsurance.value = "";
+        patService.value = "";
+        patAddress.value = "";
+        patPhone.value = "";
+        patMail.value = "";
+        newPatForm.classList.add("hidden");
+    }
+
+    //Checking for empty fields; if no empty fields the data is sent
+    if (patFNameValue == "" || patLNameValue == "" || patGenderValue == "" || patDate == "" || patInsuranceValue == "" || patServiceValue == "" || patAddressValue == "" || patPhoneValue == "" || patMailValue == ""){
         alert('Please fill all the fields');
     }
     else{
-        console.log("all went good");
-        console.log(patFName);
-        console.log(patLName);
-        console.log(patGender);
-        console.log(fullDate);
-        console.log(patInsurance);
-        console.log(patService);
-        console.log(patAddress);
-        console.log(patPhone);
-        console.log(patMail);
+        var dataPatient = {
+            id: lastId,
+            fname: patFNameValue,
+            lname: patLNameValue,
+            gender: patGenderValue,
+            bdate: fullDate,
+            insurance: patInsuranceValue,
+            service: patServiceValue,
+            address: patAddressValue,
+            phoneNum: patPhoneValue,
+            mail: patMailValue
+        }
+
+        $.post(URLP, dataPatient, (res, status) =>{
+            console.log(`Status: ${status}, Message: ${res.msg}\n`);
+        });
+
+        setTimeout(function(){
+            removePatRows();
+            loadPatients();
+            resetPatForm();
+        }, 1000); 
+     
     }
 })
-/*
-subPat.addEventListener('click', () => {
-
-    var patFName = $('.pat-fname').val();
-    var patLName = $('.pat-lname').val();
-    var patGender = $('.pat-gender').val();
-    var patDate = $('.pat-date').val();
-    var patInsurance = $('.pat-insurance').val();
-    var patService = $('.pat-service').val();
-    var patAddress = $('.pat-address').val();
-    var patMail = $('.pat-mail').val();
-
-    
-    if (patFName == '' || patLName == '' || patGender == '' || patDate == '' || patInsurance == '' || patService == '' || patAddress == '' || patMail == '') {
-        alert('Please fill all the necessary fields');
-    } else {
-        $('body').addClass("active");
-        $('.confirm-text-pat').removeClass("hidden");
-
-        $('.pat-confim-content').append(`
-            <h3 class="mb-5">Confirm Patient Information</h3>
-            <p><span>First Name:</span> ${patFName}</p>
-            <p><span>Last Name:</span> ${patLName}</p>
-            <p><span>Gender:</span> ${patGender}</p>
-            <p><span>Date of Birth:</span> ${patDate}</p>
-            <p><span>Insurance:</span> ${patInsurance}</p>
-            <p><span>Service:</span> ${patService}</p>
-            <p><span>Address:</span> ${patAddress}</p>
-            <p><span>Mail:</span> ${patMail}</p>
-            <div class="row pt-3">
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block mb-3" id="confirm-patient">Confirm</button>
-                </div>
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-danger btn-lg btn-block mb-3" id="cancel-confirm-pat">Close</button>
-                </div>
-            </div>
-        `);
-
-        $(document).ready(mainPatients);
-
-        function mainPatients(){
-            $('#confirm-patient').click(sendDataPatient);      
-        }
-        
-        $('#cancel-confirm-pat').on("click", function(){
-            $('body').removeClass("active");
-            $('.confirm-text-pat').addClass("hidden");
-            $('.pat-confim-content').empty();
-        });
-    }
-
-});
-*/
-
-/*
-function sendDataPatient(){
-    var amountTr = document.querySelectorAll('.body-patient-table tr');
-    var lastTr = amountTr[amountTr.length - 1];
-    var lastId = parseInt($(lastTr).children('td:first').text(), 10);
-    lastId++;
-    console.log(lastId);
-    var patFName = $('.pat-fname').val();
-    var patLName = $('.pat-lname').val();
-    var patGender = $('.pat-gender').val();
-    var patDate = $('.pat-date').val();
-    var patInsurance = $('.pat-insurance').val();
-    var patService = $('.pat-service').val();
-    var patAddress = $('.pat-address').val();
-    var patMail = $('.pat-mail').val();
-
-    var dataPatient = {
-            id: lastId,
-            fname: patFName,
-            lname: patLName,
-            gender: patGender,
-            bdate: patDate,
-            insurance: patInsurance,
-            service: patService,
-            address: patAddress,
-            mail: patMail
-    }
-
-    $.post(URLP, dataPatient, (res, status) =>{
-            alert(`Status: ${status}, Message: ${res.msg}\n`);
-    });
-
-    $('body').removeClass("active");
-    $('.confirm-text-pat').addClass("hidden");
-
-    $('.pat-fname').val('');
-    $('.pat-lname').val('');
-    $('.pat-gender').val('');
-    $('.pat-date').val('');
-    $('.pat-insurance').val('');
-    $('.pat-service').val('');
-    $('.pat-address').val('');
-    $('.pat-mail').val('');
-
-    setTimeout(function(){
-        window.location.reload();
-
-    }, 500); 
-
-}*/

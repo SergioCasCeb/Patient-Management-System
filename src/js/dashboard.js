@@ -1,30 +1,15 @@
-/** main dashboard site **/
+/******** main dashboard site ********/
 
-/* user menu */
+/**** user menu ****/
 const userIcon = document.querySelector(".user-btn");
 
 userIcon.addEventListener("click", () => {
     userIcon.classList.toggle("open");
 })
 
-
-/* section patients */
+/**** section patients ****/
 const patientTab = document.querySelector(".pat-tab");
 const patientSection = document.querySelector(".patient-main");
-
-patientTab.addEventListener("click", () => {
-    const rowsPat = tablePatients.querySelectorAll('tr:not(tr.no-results)');
-    rowsPat.forEach(row => {
-        row.remove();
-    });
-    patientTab.classList.add("selected");
-    serviceTab.classList.remove("selected");
-    patientSection.classList.remove("hidden");
-    serviceSection.classList.add("hidden");
-    loadPatients();
-})
-
-/**** Main functionality patient section****/
 const tablePatients = document.querySelector(".table-patients tbody");
 const searchPatient = document.querySelector(".search-patient input");
 const filterPatient = document.querySelector(".filter-patient select");
@@ -32,8 +17,29 @@ const noResultsMsg = document.querySelector(".table-patients .no-results");
 const newPatForm = document.querySelector(".new-pat-form");
 const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
+
+//Loading the patient list as soon as the user access the main site
 loadPatients();
 
+//Patient tab listener, removes rows to allow for an update and changes simple styles
+patientTab.addEventListener("click", () => {
+    removePatRows();
+    patientTab.classList.add("selected");
+    serviceTab.classList.remove("selected");
+    patientSection.classList.remove("hidden");
+    serviceSection.classList.add("hidden");
+    loadPatients();
+})
+
+// Delete previous rows to add new ones
+function removePatRows(){
+    const rowsPat = tablePatients.querySelectorAll('tr:not(tr.no-results)');
+    rowsPat.forEach(row => {
+        row.remove();
+    });
+}
+
+//Returns the filter options to default after changing a filter option
 function returnPatDefault(){
     const rows = tablePatients.querySelectorAll('tr:not(tr.no-results)');
     searchPatient.value = '';
@@ -43,6 +49,7 @@ function returnPatDefault(){
         row.style.display = 'table-row';
     })
 }
+
 //Function to load patients table
 function loadPatients() {
     returnPatDefault();
@@ -75,12 +82,16 @@ function loadPatients() {
             }
         }
 
+        //Get all row that not include the class no-results
         const rows = tablePatients.querySelectorAll('tr:not(tr.no-results)');
 
+        //Checks for a change in the filter dropdown menu
         filterPatient.addEventListener("change", () => {
             let filterVal = filterPatient.options[filterPatient.selectedIndex].value;
             searchPatient.disabled = false;
             returnPatDefault();
+
+            //Filters rows base on the given filter and the inputed key
             searchPatient.addEventListener("keyup", () => {
                 let value = searchPatient.value.toLowerCase();
                 rows.forEach(row => {
@@ -94,6 +105,7 @@ function loadPatients() {
                     }
                 });
 
+                //Checks for all the current rows showing on the screen and if there are none show the "no results found text"
                 let shownRows = document.querySelectorAll(".table-patients tbody .shown");
                 if(shownRows.length == 0){
                     noResultsMsg.classList.remove("hidden");
@@ -107,6 +119,7 @@ function loadPatients() {
     xhr.send();
 }
 
+//New patient form submit and cancel  buttons
 cancelBtnPat.addEventListener("click", () => {
     newPatForm.classList.add("hidden");
 })
@@ -116,11 +129,9 @@ newPatBtn.addEventListener("click", () => {
 
 
 
-/* section services */
+/**** section services ****/
 const serviceTab = document.querySelector(".service-tab");
 const serviceSection = document.querySelector(".service-main");
-
-/**** Services selection****/
 const tableServices = document.querySelector(".table-services tbody");
 const searchService = document.querySelector(".search-service input");
 const filterService = document.querySelector(".filter-service select");
@@ -132,16 +143,22 @@ const newSerBtn = document.querySelector(".new-service-btn");
 
 //Open and show the services tab
 serviceTab.addEventListener("click", () => {
-    const rowsSer = tableServices.querySelectorAll('tr:not(tr.no-results)');
-    rowsSer.forEach(row => {
-        row.remove();
-    });
+    removeSerRows();
     serviceTab.classList.add("selected");
     patientTab.classList.remove("selected");
     serviceSection.classList.remove("hidden");
     patientSection.classList.add("hidden");  
     loadServices();
 })
+
+// Delete previous rows to add new ones
+function removeSerRows(){
+    const rowsSer = tableServices.querySelectorAll('tr:not(tr.no-results)');
+    rowsSer.forEach(row => {
+        row.remove();
+    });
+}
+
 //return service tab to defaults
 function returnSerDefault(){
     const rows = tableServices.querySelectorAll('tr:not(tr.no-results)');
@@ -152,6 +169,7 @@ function returnSerDefault(){
         row.style.display = 'table-row';
     })
 }
+
 //Function to load services table
 function loadServices() {
     returnSerDefault();
@@ -180,12 +198,16 @@ function loadServices() {
             }
         }
 
+        //Get all rows that not include the class no-results
         const rows = tableServices.querySelectorAll('tr:not(tr.no-results)');
 
+        //Checks for a change in the filter dropdown menu
         filterService.addEventListener("change", () => {
             searchService.disabled = false;
             let filterVal = filterService.options[filterService.selectedIndex].value;
             returnSerDefault();
+
+            //Filters rows base on the given filter and the inputed key
             searchService.addEventListener("keyup", () => {
                 let value = searchService.value.toLowerCase();
                 rows.forEach(row => {
@@ -199,6 +221,7 @@ function loadServices() {
                     }
                 });
 
+                //Checks for all the current rows showing on the screen and if there are none show the "no results found text"
                 let shownRows = document.querySelectorAll(".table-services tbody .shown");
                 if(shownRows.length == 0){
                     noResultsSer.classList.remove("hidden");
@@ -212,7 +235,7 @@ function loadServices() {
     xhr.send();
 }
 
-
+//New service form submit and cancel buttons
 cancelBtnSer.addEventListener("click", () => {
     newSerForm.classList.add("hidden");
 })

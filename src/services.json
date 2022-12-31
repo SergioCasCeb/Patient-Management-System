@@ -28,5 +28,41 @@
     "name": "Another service",
     "privatePrice": 50,
     "pvPrice": 55
+  },
+  {
+    "idSer": "6",
+    "name": "New service 6",
+    "privatePrice": "20",
+    "pvPrice": "35"
+  },
+  {
+    "idSer": "7",
+    "name": "New service 7",
+    "privatePrice": "10",
+    "pvPrice": "20"
+  },
+  {
+    "idSer": "8",
+    "name": "New service 8",
+    "privatePrice": "45",
+    "pvPrice": "95"
+  },
+  {
+    "idSer": "9",
+    "name": "New service 9",
+    "privatePrice": "5",
+    "pvPrice": "25"
+  },
+  {
+    "idSer": "10",
+    "name": "new service 10",
+    "privatePrice": "45",
+    "pvPrice": "105"
+  },
+  {
+    "idSer": "11",
+    "name": "new service 11",
+    "privatePrice": "105",
+    "pvPrice": "204"
   }
 ]
