@@ -17,7 +17,7 @@ const noResultsMsg = document.querySelector(".table-patients .no-results");
 const newPatForm = document.querySelector(".new-pat-form");
 const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
-
+const numPatients = document.querySelector(".num-pat");
 //Loading the patient list as soon as the user access the main site
 loadPatients();
 
@@ -75,7 +75,7 @@ function loadPatients() {
                     <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                 </td>
                 <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
-                    <button>See Profile</button>
+                    <button class="profile-btn">See Profile</button>
                 </td>
                 `;
                 tablePatients.append(tr); 
@@ -84,6 +84,19 @@ function loadPatients() {
 
         //Get all row that not include the class no-results
         const rows = tablePatients.querySelectorAll('tr:not(tr.no-results)');
+        //Get number of patients and append it
+        let patTotal = rows.length;
+        numPatients.innerText = patTotal;
+
+        //Get all the profile btns
+        const profileBtn = document.querySelectorAll(".profile-btn");
+        console.log(profileBtn);
+        profileBtn.forEach(profile => {
+            profile.addEventListener("click", () => {
+                let patId = (((profile.parentElement).parentElement).children[0].innerText);
+                profilePopUp.classList.remove("opacity-0", "pointer-events-none");
+            })
+        })
 
         //Checks for a change in the filter dropdown menu
         filterPatient.addEventListener("change", () => {
@@ -140,6 +153,7 @@ const newSerForm = document.querySelector(".new-ser-form");
 const submitBtnSer = newSerForm.querySelector(".submit-btn");
 const cancelBtnSer = newSerForm.querySelector(".cancel-btn");
 const newSerBtn = document.querySelector(".new-service-btn");
+const numServices = document.querySelector(".num-ser");
 
 //Open and show the services tab
 serviceTab.addEventListener("click", () => {
@@ -200,6 +214,9 @@ function loadServices() {
 
         //Get all rows that not include the class no-results
         const rows = tableServices.querySelectorAll('tr:not(tr.no-results)');
+        //Get number of services and append it
+        let serTotal = rows.length;
+        numServices.innerText = serTotal;
 
         //Checks for a change in the filter dropdown menu
         filterService.addEventListener("change", () => {
@@ -241,4 +258,21 @@ cancelBtnSer.addEventListener("click", () => {
 })
 newSerBtn.addEventListener("click", () => {
     newSerForm.classList.remove("hidden");
+})
+
+/****** success and fail pop ups ******/
+const popUpContainer = document.querySelector(".popup-container");
+const popUpContent = document.querySelector(".popup-content");
+const popUpSuccess = document.querySelector(".popup-success");
+const popUpFail = document.querySelector(".popup-fail");
+
+
+
+/****** profile pop up ******/
+const profilePopUp = document.querySelector(".pat-profile-container");
+const exitProfile = document.querySelector(".exit-profile");
+
+
+exitProfile.addEventListener("click", () => {
+    profilePopUp.classList.add("opacity-0", "pointer-events-none");
 })

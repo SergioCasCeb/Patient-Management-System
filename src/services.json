@@ -64,5 +64,11 @@
     "name": "new service 11",
     "privatePrice": "105",
     "pvPrice": "204"
+  },
+  {
+    "idSer": "12",
+    "name": "hhhhh",
+    "privatePrice": "6",
+    "pvPrice": "66"
   }
 ]

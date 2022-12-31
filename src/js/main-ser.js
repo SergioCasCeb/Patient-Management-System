@@ -36,7 +36,13 @@ newSerForm.addEventListener("submit", (e) => {
 
     //Checking for empty fields; if no empty fields the data is sent
     if (serviceNameValue == "" || privatePriceValue == "" || pvPriceValue == ""){
-        alert('Please fill all the fields');
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpFail.innerText = "Please remember to fill all the required fields!";
+
+        setTimeout(function(){
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpFail.innerText = "";
+        }, 2000); 
     }
     else{
         var dataService = {
@@ -50,10 +56,15 @@ newSerForm.addEventListener("submit", (e) => {
             console.log(`Status: ${status}, Message: ${res.msg}\n`);
         });
 
+        resetSerForm();
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpSuccess.innerText = "The new service has been added successfuly";
+
         setTimeout(function(){
             removeSerRows();
             loadServices();
-            resetSerForm();
-        }, 1000); 
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpSuccess.innerText = "";
+        }, 2000); 
     }
 })

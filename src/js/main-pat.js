@@ -54,12 +54,19 @@ newPatForm.addEventListener("submit", (e) => {
         patAddress.value = "";
         patPhone.value = "";
         patMail.value = "";
+        document.querySelector("#dateBirth").value = "";
         newPatForm.classList.add("hidden");
     }
 
     //Checking for empty fields; if no empty fields the data is sent
     if (patFNameValue == "" || patLNameValue == "" || patGenderValue == "" || patDate == "" || patInsuranceValue == "" || patServiceValue == "" || patAddressValue == "" || patPhoneValue == "" || patMailValue == ""){
-        alert('Please fill all the fields');
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpFail.innerText = "Please remember to fill all the required fields!";
+
+        setTimeout(function(){
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpFail.innerText = "";
+        }, 2000); 
     }
     else{
         var dataPatient = {
@@ -79,11 +86,15 @@ newPatForm.addEventListener("submit", (e) => {
             console.log(`Status: ${status}, Message: ${res.msg}\n`);
         });
 
+        resetPatForm();
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpSuccess.innerText = "The new patient has been added successfuly";
+
         setTimeout(function(){
             removePatRows();
             loadPatients();
-            resetPatForm();
-        }, 1000); 
-     
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpSuccess.innerText = "";
+        }, 2000); 
     }
 })
