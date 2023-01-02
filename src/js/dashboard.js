@@ -18,6 +18,20 @@ const newPatForm = document.querySelector(".new-pat-form");
 const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
 const numPatients = document.querySelector(".num-pat");
+//Profile patitent pop up elemnts
+const profileId = document.querySelector(".pat-id");
+const profileFirstName = document.querySelector(".patient-first-name");
+const profileLastName = document.querySelector(".patient-last-name");
+const profileGender = document.querySelector(".patient-gender");
+const profileDateBirth = document.querySelector(".patient-date-birth");
+const profileAddress = document.querySelector(".patient-address");
+const profilePhone = document.querySelector(".patient-phone");
+const profileMail = document.querySelector(".patient-mail");
+const profileInsurance = document.querySelector(".pat-insurance");
+const profileService = document.querySelector(".pat-service");
+const profilePay = document.querySelector(".amount-pay");
+// const profileDeadline = document.querySelector(".deadline");
+// const profileNextDeadline = document.querySelector(".next-payment");
 //Loading the patient list as soon as the user access the main site
 loadPatients();
 
@@ -71,8 +85,8 @@ function loadPatients() {
                 <td class="border-y-2 border-gray-blue-400 py-2">${patients[i].insurance}</td>
                 <td class="border-y-2 border-gray-blue-400 py-2">${patients[i].service}</td>
                 <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                    <button class="mr-2 group"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="mr-2 group edit-pat-btn"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="group delete-pat-btn"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                 </td>
                 <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
                     <button class="profile-btn">See Profile</button>
@@ -90,11 +104,46 @@ function loadPatients() {
 
         //Get all the profile btns
         const profileBtn = document.querySelectorAll(".profile-btn");
-        console.log(profileBtn);
         profileBtn.forEach(profile => {
             profile.addEventListener("click", () => {
-                let patId = (((profile.parentElement).parentElement).children[0].innerText);
                 profilePopUp.classList.remove("opacity-0", "pointer-events-none");
+                patId = (((profile.parentElement).parentElement).children[0].innerText);
+                showProfile(patId);
+            })
+        });
+
+        
+        //Get all delete btns
+        const deletePatBtn = document.querySelectorAll(".delete-pat-btn");
+        let patId;
+        deletePatBtn.forEach(deleteBtn => {
+            deleteBtn.addEventListener("click", () => {
+                patId = (((deleteBtn.parentElement).parentElement).children[0].innerText);
+                let deletePatient = {
+                    id: patId,
+                    fname: "",
+                    lname: "",
+                    gender: "",
+                    bdate: "",
+                    insurance: "",
+                    service: "",
+                    address: "",
+                    phoneNum: "",
+                    mail: ""
+                }
+                $.post('http://localhost:3000/patients', deletePatient, (res, status) =>{
+                    console.log(`Status: ${status}, Message: The patient has been deleted\n`);
+                });
+
+                popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+                popUpFail.innerText = "The Patient entry has been deleted";
+
+                setTimeout(function(){
+                    removePatRows();
+                    loadPatients();
+                    popUpContainer.classList.add("opacity-0", "pointer-events-none");
+                    popUpFail.innerText = "";
+                }, 2000); 
             })
         })
 
@@ -139,8 +188,6 @@ cancelBtnPat.addEventListener("click", () => {
 newPatBtn.addEventListener("click", () => {
     newPatForm.classList.remove("hidden");
 })
-
-
 
 /**** section services ****/
 const serviceTab = document.querySelector(".service-tab");
@@ -276,3 +323,49 @@ const exitProfile = document.querySelector(".exit-profile");
 exitProfile.addEventListener("click", () => {
     profilePopUp.classList.add("opacity-0", "pointer-events-none");
 })
+
+
+/****** Function load profile for each patient ******/
+function showProfile(id){
+    var xhrPat = new XMLHttpRequest();
+    var xhrSer = new XMLHttpRequest();
+    xhrPat.open('GET', 'patients.json', true);
+    xhrSer.open('GET', 'services.json', true);
+    xhrPat.onload = function() {
+        if(this.status == 200){
+            let patients = JSON.parse(this.responseText);
+            patients.forEach(patient => {
+                if(id == patient.id){
+                    profileId.innerText = patient.id;
+                    profileFirstName.innerText = patient.fname;
+                    profileLastName.innerText = patient.lname;
+                    profileGender.innerText = patient.gender;
+                    profileDateBirth.innerText = patient.bdate;
+                    profileAddress.innerText = patient.address;
+                    profilePhone.innerText = patient.phoneNum;
+                    profileMail.innerText = patient.mail;
+                    profileInsurance.innerText = patient.insurance;
+
+                    xhrSer.onload = function(){
+                        if(this.status == 200){
+                            let services = JSON.parse(this.responseText);
+                            services.forEach(service => {
+                                if(patient.service == service.idSer){
+                                    profileService.innerText = service.name;
+                                }
+                                if(patient.insurance == "private" && patient.service == service.idSer){
+                                    profilePay.innerText = service.privatePrice;
+                                }
+                                if(patient.insurance == "pv" && patient.service == service.idSer){
+                                    profilePay.innerText = service.pvPrice;
+                                }
+                            });
+                        }  
+                    }
+                    xhrSer.send();
+                }
+            });
+        }   
+    }
+    xhrPat.send();
+}

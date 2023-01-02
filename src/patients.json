@@ -1,38 +1,38 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "fname": "John",
     "lname": "Doe",
     "gender": "male",
     "bdate": "1999-06-18",
     "insurance": "private",
-    "service": 2,
+    "service": "2",
     "address": "Schachinger Weg 8",
-    "phone": "01746083746",
+    "phoneNum": "01746083746",
     "mail": "serghiocas@gmail.com"
   },
   {
-    "id": 2,
+    "id": "2",
     "fname": "Mary",
     "lname": "Moe",
     "gender": "female",
     "bdate": "1997-12-27",
     "insurance": "pv",
-    "service": 4,
+    "service": "4",
     "address": "Schachinger Weg 10",
-    "phone": "01746083746",
+    "phoneNum": "01746083746",
     "mail": "marymoe@gmail.com"
   },
   {
-    "id": 3,
+    "id": "3",
     "fname": "July",
     "lname": "Dooley",
     "gender": "female",
     "bdate": "2001-10-06",
     "insurance": "pv",
-    "service": 1,
+    "service": "1",
     "address": "Detterstrasse 24",
-    "phone": "01746083746",
+    "phoneNum": "01746083746",
     "mail": "julydooley@gmail.com"
   },
   {
@@ -44,19 +44,19 @@
     "insurance": "private",
     "service": "2",
     "address": "schaching weg",
-    "phone": "01746083746",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
     "id": "5",
-    "fname": "New",
-    "lname": "Patient",
+    "fname": "Sergio Eduardo",
+    "lname": "Castro Ceballos",
     "gender": "male",
-    "bdate": "2022-12-31",
+    "bdate": "1999-06-18",
     "insurance": "private",
     "service": "2",
-    "address": "sergio address",
-    "phone": "01746083746",
+    "address": "random address 402, 94469 Deggendorf",
+    "phoneNum": "01746083746",
     "mail": "address@gmail.com"
   },
   {
@@ -68,7 +68,7 @@
     "insurance": "private",
     "service": "2",
     "address": "kljlakjf",
-    "phone": "01746083746",
+    "phoneNum": "01746083746",
     "mail": "new@gmail.com"
   },
   {
@@ -80,7 +80,7 @@
     "insurance": "private",
     "service": "1",
     "address": "jajs",
-    "phone": "01746083746",
+    "phoneNum": "01746083746",
     "mail": "new@gmail.com"
   },
   {
@@ -92,6 +92,7 @@
     "insurance": "private",
     "service": "1",
     "address": "adress",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
@@ -103,21 +104,11 @@
     "insurance": "private",
     "service": "1",
     "address": "adress",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
     "id": "10",
-    "fname": "soomtho",
-    "lname": "kljfkajfd",
-    "gender": "male",
-    "bdate": "29.11.2021",
-    "insurance": "private",
-    "service": "1",
-    "address": "adress",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "11",
     "fname": "pat",
     "lname": "11",
     "gender": "male",
@@ -125,6 +116,7 @@
     "insurance": "pv",
     "service": "4",
     "address": "adress 11",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
@@ -136,6 +128,7 @@
     "insurance": "pv",
     "service": "4",
     "address": "adress 12",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
@@ -147,6 +140,7 @@
     "insurance": "pv",
     "service": "4",
     "address": "adress 13",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   },
   {
@@ -158,149 +152,7 @@
     "insurance": "pv",
     "service": "4",
     "address": "adress 14",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "15",
-    "fname": "pat",
-    "lname": "pat",
-    "gender": "pat",
-    "bdate": "30.11.2019",
-    "insurance": "pat",
-    "service": "pat",
-    "address": "pat",
-    "mail": "pat"
-  },
-  {
-    "id": "16",
-    "fname": "pat ",
-    "lname": "pat ",
-    "gender": "pat ",
-    "bdate": "30.11.2019",
-    "insurance": "pat ",
-    "service": "pat ",
-    "address": "pat ",
-    "mail": "pat "
-  },
-  {
-    "id": "17",
-    "fname": "pat",
-    "lname": "17",
-    "gender": "female",
-    "bdate": "27.9.2018",
-    "insurance": "private",
-    "service": "3",
-    "address": "adress 17",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "18",
-    "fname": "pat",
-    "lname": "18",
-    "gender": "female",
-    "bdate": "27.9.2018",
-    "insurance": "private",
-    "service": "3",
-    "address": "adress 18",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "19",
-    "fname": "pat",
-    "lname": "19",
-    "gender": "female",
-    "bdate": "26.8.2017",
-    "insurance": "pv",
-    "service": "1",
-    "address": "a",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "20",
-    "fname": "pat",
-    "lname": "20",
-    "gender": "female",
-    "bdate": "25.6.2015",
-    "insurance": "pv",
-    "service": "1",
-    "address": "address",
-    "mail": "email@gmail.com"
-  },
-  {
-    "id": "21",
-    "fname": "pat",
-    "lname": "21",
-    "gender": "female",
-    "bdate": "28.6.2015",
-    "insurance": "pv",
-    "service": "4",
-    "address": "afa",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "22",
-    "fname": "pat ",
-    "lname": "22",
-    "gender": "female",
-    "bdate": "28.6.2017",
-    "insurance": "pv",
-    "service": "4",
-    "address": "address",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "23",
-    "fname": "faa",
-    "lname": "hkhk",
-    "gender": "female",
-    "bdate": "27.5.2016",
-    "insurance": "private",
-    "service": "2",
-    "address": "afafaf",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "24",
-    "fname": "hsg",
-    "lname": "gsg",
-    "gender": "female",
-    "bdate": "27.5.2018",
-    "insurance": "pv",
-    "service": "2",
-    "address": "gsg",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "25",
-    "fname": "fff",
-    "lname": "ffff",
-    "gender": "male",
-    "bdate": "16.5.2018",
-    "insurance": "pv",
-    "service": "4",
-    "address": "ffff",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "26",
-    "fname": "hhhh",
-    "lname": "hhhh",
-    "gender": "male",
-    "bdate": "2.1.2024",
-    "insurance": "private",
-    "service": "4",
-    "address": "sgsg",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "27",
-    "fname": "fafaf",
-    "lname": "faf",
-    "gender": "male",
-    "bdate": "29.11.2021",
-    "insurance": "private",
-    "service": "2",
-    "address": "gg",
+    "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   }
 ]
