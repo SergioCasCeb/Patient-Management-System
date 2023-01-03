@@ -34,7 +34,7 @@ routerPatient.post('/', (req, res, next) =>{
         mail: req.body.mail
     };
 
-    //adding the new patient to the the the entries
+    //adding the new patient to the entries
     entriesPatient = newPatient;
     res.status(200).json({ msg: 'The new patient has been saved successfully'});
 

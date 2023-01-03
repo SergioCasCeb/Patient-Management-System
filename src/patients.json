@@ -142,17 +142,5 @@
     "address": "adress 13",
     "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "14",
-    "fname": "pat",
-    "lname": "14",
-    "gender": "male",
-    "bdate": "30.11.2019",
-    "insurance": "pv",
-    "service": "4",
-    "address": "adress 14",
-    "phoneNum": "01746083746",
-    "mail": "sergio@gmail.com"
   }
 ]

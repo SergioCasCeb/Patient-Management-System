@@ -251,8 +251,8 @@ function loadServices() {
                 <td class="border-y-2 border-gray-blue-400 py-2">${services[i].privatePrice}</td>
                 <td class="border-y-2 border-gray-blue-400 py-2">${services[i].pvPrice}</td>
                 <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                    <button class="mr-2 group"><i class="fa-solid fa-file-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                    <button class="group"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="mr-2 group edit-ser-btn"><i class="fa-solid fa-file-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="group delete-ser-btn"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                 </td>
                 `;
                 tableServices.append(tr); 
@@ -264,6 +264,65 @@ function loadServices() {
         //Get number of services and append it
         let serTotal = rows.length;
         numServices.innerText = serTotal;
+
+        //Get all delete btns and input an empty object with the id to then be removed
+        const deleteSerBtn = document.querySelectorAll(".delete-ser-btn");
+        let serId;
+        deleteSerBtn.forEach(deleteBtn => {
+            deleteBtn.addEventListener("click", () => {
+                serId = (((deleteBtn.parentElement).parentElement).children[0].innerText);
+                let deleteService = {
+                    idSer: serId,
+                    name: "",
+                    privatePrice: "",
+                    pvPrice: ""
+                }
+
+                $.post('http://localhost:3000/services', deleteService, (res, status) =>{
+                    console.log(`Status: ${status}, Message: The service has been deleted\n`);
+                });
+
+                popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+                popUpFail.innerText = "The Service entry has been deleted";
+
+                setTimeout(function(){
+                    removeSerRows();
+                    loadServices();
+                    popUpContainer.classList.add("opacity-0", "pointer-events-none");
+                    popUpFail.innerText = "";
+                }, 2000); 
+            })
+        });
+
+        //Get all edit btns 
+        const editSerBtn = document.querySelectorAll(".edit-ser-btn");
+        editSerBtn.forEach(editBtn => {
+            editBtn.addEventListener("click", () => {
+                serId = (((editBtn.parentElement).parentElement).children[0].innerText);
+                /*
+                let deleteService = {
+                    idSer: serId,
+                    name: "",
+                    privatePrice: "",
+                    pvPrice: ""
+                }
+
+                $.post('http://localhost:3000/services', deleteService, (res, status) =>{
+                    console.log(`Status: ${status}, Message: The service has been deleted\n`);
+                });
+
+                popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+                popUpFail.innerText = "The Service entry has been deleted";
+
+                setTimeout(function(){
+                    removeSerRows();
+                    loadServices();
+                    popUpContainer.classList.add("opacity-0", "pointer-events-none");
+                    popUpFail.innerText = "";
+                }, 2000); 
+                */
+            })
+        });
 
         //Checks for a change in the filter dropdown menu
         filterService.addEventListener("change", () => {
@@ -313,17 +372,13 @@ const popUpContent = document.querySelector(".popup-content");
 const popUpSuccess = document.querySelector(".popup-success");
 const popUpFail = document.querySelector(".popup-fail");
 
-
-
 /****** profile pop up ******/
 const profilePopUp = document.querySelector(".pat-profile-container");
 const exitProfile = document.querySelector(".exit-profile");
 
-
 exitProfile.addEventListener("click", () => {
     profilePopUp.classList.add("opacity-0", "pointer-events-none");
-})
-
+});
 
 /****** Function load profile for each patient ******/
 function showProfile(id){

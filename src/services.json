@@ -1,45 +1,39 @@
 [
   {
-    "idSer": 1,
+    "idSer": "1",
     "name": "Blood preasure measurement",
-    "privatePrice": 20,
-    "pvPrice": 25
+    "privatePrice": "20",
+    "pvPrice": "25"
   },
   {
-    "idSer": 2,
+    "idSer": "2",
     "name": "Cholesterol measurement",
-    "privatePrice": 30,
-    "pvPrice": 35
+    "privatePrice": "30",
+    "pvPrice": "35"
   },
   {
-    "idSer": 3,
+    "idSer": "3",
     "name": "General check-up",
-    "privatePrice": 50,
-    "pvPrice": 55
+    "privatePrice": "50",
+    "pvPrice": "55"
   },
   {
-    "idSer": 4,
+    "idSer": "4",
     "name": "Somehting service",
-    "privatePrice": 30,
-    "pvPrice": 35
+    "privatePrice": "30",
+    "pvPrice": "35"
   },
   {
-    "idSer": 5,
+    "idSer": "5",
     "name": "Another service",
-    "privatePrice": 50,
-    "pvPrice": 55
+    "privatePrice": "50",
+    "pvPrice": "55"
   },
   {
     "idSer": "6",
     "name": "New service 6",
     "privatePrice": "20",
     "pvPrice": "35"
-  },
-  {
-    "idSer": "7",
-    "name": "New service 7",
-    "privatePrice": "10",
-    "pvPrice": "20"
   },
   {
     "idSer": "8",
@@ -61,14 +55,8 @@
   },
   {
     "idSer": "11",
-    "name": "new service 11",
-    "privatePrice": "105",
-    "pvPrice": "204"
-  },
-  {
-    "idSer": "12",
-    "name": "hhhhh",
-    "privatePrice": "6",
-    "pvPrice": "66"
+    "name": "service 11",
+    "privatePrice": "20",
+    "pvPrice": "60"
   }
 ]

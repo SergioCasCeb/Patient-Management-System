@@ -45,7 +45,7 @@ newSerForm.addEventListener("submit", (e) => {
         }, 2000); 
     }
     else{
-        var dataService = {
+        let dataService = {
             idSer: lastId,
             name: serviceNameValue,
             privatePrice: privatePriceValue,
