@@ -100,6 +100,11 @@ function loadPatients() {
                 <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
                     <button class="mr-2 group edit-pat-btn"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                     <button class="group delete-pat-btn"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <div class="confirm-pat-container flex flex-row items-center justify-center flex-wrap hidden">
+                        <p class="text-dark-800 text-base w-full mb-1">This entry will be deleted permanently!</p>
+                        <button class="w-[49%] group confirm-delete-pat py-1 px-2 mr-2 text-base rounded-lg bg-success-400 text-light-400 hover:bg-success-600 duration-300">Confirm</button>
+                        <button class="w-[49%] group cancel-delete-pat py-1 px-2 text-base rounded-lg bg-danger-400 text-light-400 hover:bg-danger-600 duration-300">Cancel</button>
+                    </div>
                 </td>
                 <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
                     <button class="profile-btn">See Profile</button>
@@ -131,43 +136,60 @@ function loadPatients() {
         let patId;
         deletePatBtn.forEach(deleteBtn => {
             deleteBtn.addEventListener("click", () => {
+                
                 patId = (((deleteBtn.parentElement).parentElement).children[0].innerText);
+                const editSibling = deleteBtn.previousElementSibling;
+                const confirmPatContainer = deleteBtn.nextElementSibling;
+                const confirmDeletePat = confirmPatContainer.querySelector(".confirm-delete-pat");
+                const cancelDeletePat = confirmPatContainer.querySelector(".cancel-delete-pat");
 
-                $.ajax({
-                    url: 'http://localhost:3000/patients',
-                    type: 'DELETE',
-                    dataType: 'json',
-                    data : {
-                        id: patId,
-                        fname: "",
-                        lname: "",
-                        gender: "",
-                        bdate: "",
-                        insurance: "",
-                        service: "",
-                        address: "",
-                        phoneNum: "",
-                        mail: ""
-                    },
-                    success: function(response) {
-                        console.log(response);
-                    },
-                    error: function(response) {
-                        console.log(response);
-                    }
+                confirmPatContainer.classList.remove("hidden");
+                deleteBtn.classList.add("hidden");
+                editSibling.classList.add("hidden");
+
+                cancelDeletePat.addEventListener("click", () => {
+                    confirmPatContainer.classList.add("hidden");
+                    deleteBtn.classList.remove("hidden");
+                    editSibling.classList.remove("hidden");
                 });
 
-                popUpContainer.classList.remove("opacity-0", "pointer-events-none");
-                popUpFail.innerText = "The Patient entry has been deleted";
-
-                setTimeout(function(){
-                    removePatRows();
-                    loadPatients();
-                    popUpContainer.classList.add("opacity-0", "pointer-events-none");
-                    popUpFail.innerText = "";
-                }, 2000); 
-            })
-        })
+                confirmDeletePat.addEventListener("click", () => {
+                    $.ajax({
+                        url: 'http://localhost:3000/patients',
+                        type: 'DELETE',
+                        dataType: 'json',
+                        data : {
+                            id: patId,
+                            fname: "",
+                            lname: "",
+                            gender: "",
+                            bdate: "",
+                            insurance: "",
+                            service: "",
+                            address: "",
+                            phoneNum: "",
+                            mail: ""
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(response) {
+                            console.log(response);
+                        }
+                    });
+    
+                    popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+                    popUpFail.innerText = "The Patient entry has been deleted";
+    
+                    setTimeout(function(){
+                        removePatRows();
+                        loadPatients();
+                        popUpContainer.classList.add("opacity-0", "pointer-events-none");
+                        popUpFail.innerText = "";
+                    }, 2000);
+                });
+            });
+        });
         
         //Get all edit btns
         const editPatBtn = document.querySelectorAll(".edit-pat-btn");
@@ -337,7 +359,7 @@ function loadServices() {
         deleteSerBtn.forEach(deleteBtn => {
             deleteBtn.addEventListener("click", () => {
                 serId = (((deleteBtn.parentElement).parentElement).children[0].innerText);
-                
+
                 $.ajax({
                     url: 'http://localhost:3000/services',
                     type: 'DELETE',

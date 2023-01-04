@@ -85,7 +85,7 @@ routerPatient.post('/', (req, res, next) =>{
 
 //delete request
 routerPatient.delete('/', (req, res, next) =>{
-    res.status(200).json({ msg: 'This was a delte request for the patient list'});
+    res.status(200).json({ msg: 'This was a delete request for the patient list'});
     
     let deletePatient = {
         id: req.body.id,
