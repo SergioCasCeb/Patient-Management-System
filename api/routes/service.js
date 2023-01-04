@@ -72,11 +72,10 @@ routerService.post('/', (req, res, next) =>{
     }
 });
 
-
 //Delete request
 routerService.delete('/', (req, res, next) =>{
-    entriesService = "";
-    res.status(200).json({ msg: 'This was a delte request'});
+    res.status(200).json({ msg: 'This was a delte request for the service list'});
+    
     let newService = {
         idSer: req.body.idSer,
         name: req.body.name,
@@ -84,6 +83,7 @@ routerService.delete('/', (req, res, next) =>{
         pvPrice: req.body.pvPrice
     };
 
+    //Access json list to compare with delete entry
     let serJson = fs.readFileSync("./src/services.json", "utf-8");
     let services = JSON.parse(serJson);
     
@@ -110,48 +110,3 @@ routerService.delete('/', (req, res, next) =>{
 });
 
 module.exports = routerService;
-
-/*
-//Check if the new entry is repeated
-    //if repeated delete the entry
-    //else add the new entry
-    let deleteEntry = false;
-
-    for(let i = 0; i < patients.length; i++){
-        if(newPatient.id == patients[i].id){
-            deleteEntry = true;
-            break;   
-        }
-        else{
-            deleteEntry = false;
-        }
-    }
-
-    if(deleteEntry == true){
-        patients.forEach(patient => {
-            if(newPatient.id == patient.id){
-                //get object keys to iterate through it while deleting the entry
-                const keys = Object.keys(patient);
-                keys.forEach(key => {
-                    delete patient[key];
-                });
-                //filtering the list of patients to delete any empty objects
-                const cleanedList = patients.filter(element => {
-                if (Object.keys(element).length !== 0) {
-                    return true;
-                }
-                return false;
-                });
-    
-                //Writting it in the json file
-                patJson = JSON.stringify(cleanedList, null, 2);
-                fs.writeFileSync("./src/patients.json", patJson, "utf-8");
-            }
-        });
-    }
-    else{
-        patients.push(entriesPatient);
-        patJson = JSON.stringify(patients, null, 2);
-        fs.writeFileSync("./src/patients.json", patJson, "utf-8");
-    } 
-*/

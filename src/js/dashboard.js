@@ -18,7 +18,20 @@ const newPatForm = document.querySelector(".new-pat-form");
 const cancelBtnPat = newPatForm.querySelector(".new-pat-form .cancel-btn");
 const newPatBtn = document.querySelector(".new-pat-btn");
 const numPatients = document.querySelector(".num-pat");
-//Profile patitent pop up elemnts
+//Update form elements
+const updatePatForm = document.querySelector(".update-pat-form");
+const newPatFName = document.querySelector("#newPatFirstName");
+const newPatLName = document.querySelector("#newPatLastName");
+const newPatGender = document.querySelector("#newPatGender");
+const newPatInsurance = document.querySelector("#newInsuranceType");
+const newPatService = document.querySelector("#newServiceNum");
+const newPatAddress = document.querySelector("#newPatAddress");
+const newPatPhone = document.querySelector("#newPatPhoneNum");
+const newPatMail = document.querySelector("#newPatEmail");
+const newPatDate = document.querySelector("#newDateBirth");
+const oldPatientId = document.querySelector("#patientId");
+const cancelUpdaterPat = updatePatForm.querySelector(".cancel-btn");
+//Profile patient pop up elemnts
 const profileId = document.querySelector(".pat-id");
 const profileFirstName = document.querySelector(".patient-first-name");
 const profileLastName = document.querySelector(".patient-last-name");
@@ -119,20 +132,29 @@ function loadPatients() {
         deletePatBtn.forEach(deleteBtn => {
             deleteBtn.addEventListener("click", () => {
                 patId = (((deleteBtn.parentElement).parentElement).children[0].innerText);
-                let deletePatient = {
-                    id: patId,
-                    fname: "",
-                    lname: "",
-                    gender: "",
-                    bdate: "",
-                    insurance: "",
-                    service: "",
-                    address: "",
-                    phoneNum: "",
-                    mail: ""
-                }
-                $.post('http://localhost:3000/patients', deletePatient, (res, status) =>{
-                    console.log(`Status: ${status}, Message: The patient has been deleted\n`);
+
+                $.ajax({
+                    url: 'http://localhost:3000/patients',
+                    type: 'DELETE',
+                    dataType: 'json',
+                    data : {
+                        id: patId,
+                        fname: "",
+                        lname: "",
+                        gender: "",
+                        bdate: "",
+                        insurance: "",
+                        service: "",
+                        address: "",
+                        phoneNum: "",
+                        mail: ""
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(response) {
+                        console.log(response);
+                    }
                 });
 
                 popUpContainer.classList.remove("opacity-0", "pointer-events-none");
@@ -146,6 +168,38 @@ function loadPatients() {
                 }, 2000); 
             })
         })
+        
+        //Get all edit btns
+        const editPatBtn = document.querySelectorAll(".edit-pat-btn");
+        editPatBtn.forEach(editBtn => {
+            editBtn.addEventListener("click", () => {
+                patId = (((editBtn.parentElement).parentElement).children[0].innerText);
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'patients.json', true);
+                xhr.onload = function() {
+                    if(this.status == 200){
+                        let patients = JSON.parse(this.responseText);
+                        patients.forEach(patient => {
+                            if(patId == patient.id){
+                                oldPatientId.value = patId;
+                                newPatFName.value = patient.fname;
+                                newPatLName.value = patient.lname;
+                                newPatGender.value = patient.gender;
+                                newPatDate.value = patient.bdate;
+                                newPatAddress.value = patient.address;
+                                newPatPhone.value = patient.phoneNum;
+                                newPatMail.value = patient.mail;
+                                newPatInsurance.value = patient.insurance;
+                                newPatService.value = patient.service;
+                            }
+                        });
+                    }   
+                }
+                xhr.send();
+                //show the update service form
+                updatePatForm.classList.remove("hidden");
+            })
+        });
 
         //Checks for a change in the filter dropdown menu
         filterPatient.addEventListener("change", () => {
@@ -187,6 +241,11 @@ cancelBtnPat.addEventListener("click", () => {
 })
 newPatBtn.addEventListener("click", () => {
     newPatForm.classList.remove("hidden");
+})
+
+//Update patient form cancel btn
+cancelUpdaterPat.addEventListener("click", () => {
+    updatePatForm.classList.add("hidden");
 })
 
 /**** section services ****/
@@ -325,17 +384,6 @@ function loadServices() {
                 oldServiceId.value = serId;
                 //show the update service form
                 updateSerForm.classList.remove("hidden");
-                /*
-                let deleteService = {
-                    idSer: serId,
-                    name: "",
-                    privatePrice: "",
-                    pvPrice: ""
-                }
-
-                $.post('http://localhost:3000/services', deleteService, (res, status) =>{
-                    console.log(`Status: ${status}, Message: The service has been deleted\n`);
-                });*/
             })
         });
 
@@ -381,7 +429,7 @@ newSerBtn.addEventListener("click", () => {
     newSerForm.classList.remove("hidden");
 })
 
-//Update service from cancel btn
+//Update service form cancel btn
 cancelUpdaterSer.addEventListener("click", () => {
     updateSerForm.classList.add("hidden");
 })

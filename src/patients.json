@@ -37,15 +37,15 @@
   },
   {
     "id": "4",
-    "fname": "Luis",
-    "lname": "Castro",
+    "fname": "Luis Manuel",
+    "lname": "Castro Ceballos",
     "gender": "male",
-    "bdate": "2021-10-27",
+    "bdate": "18.7.1997",
     "insurance": "private",
     "service": "2",
-    "address": "schaching weg",
-    "phoneNum": "01746083746",
-    "mail": "sergio@gmail.com"
+    "address": "Calle #13, Jalisco",
+    "phoneNum": "394883564",
+    "mail": "luis@gmail.com"
   },
   {
     "id": "5",
@@ -110,36 +110,12 @@
   {
     "id": "10",
     "fname": "pat",
-    "lname": "11",
+    "lname": "10",
     "gender": "male",
-    "bdate": "30.11.2019",
+    "bdate": "NaN.NaN.NaN",
     "insurance": "pv",
     "service": "4",
     "address": "adress 11",
-    "phoneNum": "01746083746",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "12",
-    "fname": "pat",
-    "lname": "12",
-    "gender": "male",
-    "bdate": "30.11.2019",
-    "insurance": "pv",
-    "service": "4",
-    "address": "adress 12",
-    "phoneNum": "01746083746",
-    "mail": "sergio@gmail.com"
-  },
-  {
-    "id": "13",
-    "fname": "pat",
-    "lname": "13",
-    "gender": "male",
-    "bdate": "30.11.2019",
-    "insurance": "pv",
-    "service": "4",
-    "address": "adress 13",
     "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
   }

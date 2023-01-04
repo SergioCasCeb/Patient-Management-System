@@ -69,7 +69,7 @@ newPatForm.addEventListener("submit", (e) => {
         }, 2000); 
     }
     else{
-        var dataPatient = {
+        let dataPatient = {
             id: lastId,
             fname: patFNameValue,
             lname: patLNameValue,
@@ -97,4 +97,82 @@ newPatForm.addEventListener("submit", (e) => {
             popUpSuccess.innerText = "";
         }, 2000); 
     }
-})
+});
+
+//update patient form
+updatePatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    //Get the values for all the new inputs
+    let newPatFNameValue = newPatFName.value;
+    let newPatLNameValue = newPatLName.value;
+    let newPatGenderValue = newPatGender.value;
+    let newPatInsuranceValue = newPatInsurance.value;
+    let newPatServiceValue = newPatService.value;
+    let newPatAddressValue = newPatAddress.value;
+    let newPatPhoneValue = newPatPhone.value;
+    let newPatMailValue = newPatMail.value;
+    let newPatDateValue = new Date(newPatDate.value);
+    let oldPatientIdValue = oldPatientId.value;
+
+    let day = newPatDateValue.getDate();
+    let month = newPatDateValue.getMonth() + 1;
+    let year = newPatDateValue.getFullYear();
+    let newFullDate = day + "." + month + "." + year;
+
+    //function to reset form
+    function resetPatForm(){
+        newPatFName.value = "";
+        newPatLName.value = "";
+        newPatGender.value = "";
+        newPatDate.value = "";
+        newPatInsurance.value = "";
+        newPatService.value = "";
+        newPatAddress.value = "";
+        newPatPhone.value = "";
+        newPatMail.value = "";
+        newPatDate.value = "";
+        oldPatientId.value = "";
+        updatePatForm.classList.add("hidden");
+    }
+
+    //Checking for empty fields; if no empty fields the data is sent
+    if (newPatFNameValue == "" || newPatLNameValue == "" || newPatGenderValue == "" || newPatDateValue == "" || newPatInsuranceValue == "" || newPatServiceValue == "" || newPatAddressValue == "" || newPatPhoneValue == "" || newPatMailValue == ""){
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpFail.innerText = "Please remember to fill all the required fields!";
+
+        setTimeout(function(){
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpFail.innerText = "";
+        }, 2000); 
+    }else{
+        let updatePatient = {
+            id: oldPatientIdValue,
+            fname: newPatFNameValue,
+            lname: newPatLNameValue,
+            gender: newPatGenderValue,
+            bdate: newFullDate,
+            insurance: newPatInsuranceValue,
+            service: newPatServiceValue,
+            address: newPatAddressValue,
+            phoneNum: newPatPhoneValue,
+            mail: newPatMailValue
+        }
+
+        //send post request
+        $.post(URLP, updatePatient, (res, status) =>{
+            console.log(`Status: ${status}, Message: ${res.msg}\n`);
+        });
+
+        resetPatForm();
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpSuccess.innerText = "The patient has been updated successfuly";
+
+        setTimeout(function(){
+            removePatRows();
+            loadPatients();
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpSuccess.innerText = "";
+        }, 2000); 
+    }
+});

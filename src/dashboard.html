@@ -161,6 +161,42 @@
                         </fieldset>
                     </form>
 
+                    <form action="#" class="update-pat-form my-10 hidden">
+                        <fieldset class="p-3 border-2 border-dark-400 rounded-md flex flex-row items-center justify-between flex-wrap">
+                            <legend class="font-bold px-2">Update the patient:</legend>
+                            <input type="text" name="patientId" id="patientId" placeholder="Patient Id" disabled hidden>
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="firstName" id="newPatFirstName" placeholder="First Name">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="lastName" id="newPatLastName" placeholder="Last Name">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="patgGender" id="newPatGender">
+                                <option value="" selected disabled>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <input class="mb-2 cursor-pointer rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" type="date" name="dateBirth" id="newDateBirth">
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="insuranceType" id="newInsuranceType">
+                                <option value="" selected disabled>Insurance Type</option>
+                                <option value="private">Private</option>
+                                <option value="pv">PV</option>
+                            </select>
+                            <select class="bg-light-400 cursor-pointer mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[23.5%]" name="serviceNum" id="newServiceNum">
+                                <option value="" selected disabled>Service</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-full" type="text" name="patAddress" id="newPatAddress" placeholder="Address">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="text" name="patPhoneNum" id="newPatPhoneNum" placeholder="Phone Number">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[49%]" type="email" name="patEmail" id="newPatEmail" placeholder="Email">
+
+                            <div class="btn-container w-full flex flex-row items-center justify-center mt-5">
+                                <button class="update-btn mb-2 rounded-md bg-success-400 text-light-400 py-1 px-3 mr-6 w-4/12 hover:bg-success-600 duration-300" type="submit"><i class="fa-solid fa-check mr-2"></i>Submit</button>
+                                <button class="cancel-btn mb-2 rounded-md bg-danger-400 text-light-400 py-1 px-3 w-4/12 hover:bg-danger-600 duration-300" type="reset"><i class="fa-solid fa-xmark mr-2"></i>Cancel</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
                     <p class="text-sm text-dark-600 mb-1 text-right pr-3">Number of patients: <span class="num-pat"></span></p>
                     <div class="table-pat-container max-h-[435px] overflow-scroll pr-3">
                         <table class="w-full table-auto table-patients border-separate border-spacing-y-5 relative">
