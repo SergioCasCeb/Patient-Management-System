@@ -67,4 +67,51 @@ newSerForm.addEventListener("submit", (e) => {
             popUpSuccess.innerText = "";
         }, 2000); 
     }
-})
+});
+
+//update service form 
+updateSerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let newSerNameValue = newSerName.value;
+    let newSerPrivateValue = newSerPrivate.value;
+    let newSerPvValue = newSerPv.value;
+    let oldServiceIdValue = oldServiceId.value;
+
+    //Checking for empty fields; if no empty fields the data is sent
+    if (newSerNameValue == "" || newSerPrivateValue == "" || newSerPvValue == ""){
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpFail.innerText = "Please remember to fill all the required fields!";
+
+        setTimeout(function(){
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpFail.innerText = "";
+        }, 2000); 
+    }
+    else{
+        let updateService = {
+            idSer: oldServiceIdValue,
+            name: newSerNameValue,
+            privatePrice: newSerPrivateValue,
+            pvPrice: newSerPvValue
+        }
+        
+        $.post(URLS, updateService, (res, status) =>{
+            console.log(`Status: ${status}, Message: The service has been updated\n\n`);
+        });
+
+        newSerName.value = "";
+        newSerPrivate.value = "";
+        newSerPv.value = "";
+        oldServiceId.value = "";
+        updateSerForm.classList.add("hidden");
+        popUpContainer.classList.remove("opacity-0", "pointer-events-none");
+        popUpSuccess.innerText = "The service has been updated successfuly";
+
+        setTimeout(function(){
+            removeSerRows();
+            loadServices();
+            popUpContainer.classList.add("opacity-0", "pointer-events-none");
+            popUpSuccess.innerText = "";
+        }, 2000); 
+    }
+});

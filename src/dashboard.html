@@ -179,6 +179,8 @@
                                 <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg no-results hidden">
                                     <td colspan="6" class="border-y-2 border-2 rounded-lg border-gray-blue-400 py-2">No results where found!</td>
                                 </tr>
+                                <!--Test row-->
+                                <!-- 
                                 <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg" id="patient-row">
                                     <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">0</td>
                                     <td class="border-y-2 border-gray-blue-400 py-2">Sergio Eduardo Castro Ceballos</td>
@@ -192,6 +194,7 @@
                                         <button class="profile-btn">See Profile</button>
                                     </td>
                                 </tr>
+                                -->
                             </tbody>
                         </table>
                     </div>
@@ -229,11 +232,26 @@
                         <fieldset class="p-3 border-2 border-dark-400 rounded-md flex flex-row items-center justify-between flex-wrap">
                             <legend class="font-bold px-2">New Service</legend>
                             <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[60%]" type="text" name="serviceName" id="serviceName" placeholder="Service Name">
-                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[19%]" type="number" name="rivatePrice" id="privatePrice" min="0" placeholder="Private Price">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[19%]" type="number" name="privatePrice" id="privatePrice" min="0" placeholder="Private Price">
                             <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[19%]" type="number" name="pvPrice" id="pvPrice" min="0" placeholder="PV price">
 
                             <div class="btn-container w-full flex flex-row items-center justify-center mt-5">
                                 <button class="submit-btn mb-2 rounded-md bg-success-400 text-light-400 py-1 px-3 mr-6 w-4/12 hover:bg-success-600 duration-300" type="submit"><i class="fa-solid fa-check mr-2"></i>Submit</button>
+                                <button class="cancel-btn mb-2 rounded-md bg-danger-400 text-light-400 py-1 px-3 w-4/12 hover:bg-danger-600 duration-300" type="reset"><i class="fa-solid fa-xmark mr-2"></i>Cancel</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <form action="#" class="update-ser-form my-10 hidden">
+                        <fieldset class="p-3 border-2 border-dark-400 rounded-md flex flex-row items-center justify-between flex-wrap">
+                            <legend class="font-bold px-2">Update the service:</legend>
+                            <input type="text" name="serviceId" id="serviceId" placeholder="Service Id" disabled hidden>
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[60%]" type="text" name="newServiceName" id="newServiceName" placeholder="Service Name">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[19.5%]" type="number" name="newPrivatePrice" id="newPrivatePrice" min="0" placeholder="Private Price">
+                            <input class="mb-2 rounded-md border-2 border-dark-800 py-1 px-3 w-[19.5%]" type="number" name="newPvPrice" id="newPvPrice" min="0" placeholder="PV price">
+
+                            <div class="btn-container w-full flex flex-row items-center justify-center mt-5">
+                                <button class="update-btn mb-2 rounded-md bg-success-400 text-light-400 py-1 px-3 mr-6 w-4/12 hover:bg-success-600 duration-300" type="submit"><i class="fa-solid fa-check mr-2"></i>Update</button>
                                 <button class="cancel-btn mb-2 rounded-md bg-danger-400 text-light-400 py-1 px-3 w-4/12 hover:bg-danger-600 duration-300" type="reset"><i class="fa-solid fa-xmark mr-2"></i>Cancel</button>
                             </div>
                         </fieldset>
@@ -256,9 +274,11 @@
                                 <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300 rounded-lg no-results hidden">
                                     <td colspan="5" class="border-y-2 border-2 rounded-lg border-gray-blue-400 py-2">No results where found!</td>
                                 </tr>
+                                <!--Test row-->
+                                <!--
                                 <tr class="hover:shadow-gray-blue-200 hover:shadow-md duration-300">
                                     <td class="border-y-2 border-l-2 rounded-l-lg border-gray-blue-400 py-2">0</td>
-                                    <td class="border-y-2 border-gray-blue-400 py-2">Blood sugar level measurement</td>
+                                    <td class="border-y-2 border-gray-blue-400 py-2">TEST</td>
                                     <td class="border-y-2 border-gray-blue-400 py-2">35</td>
                                     <td class="border-y-2 border-gray-blue-400 py-2">30</td>
                                     <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
@@ -266,6 +286,7 @@
                                         <button class="group delete-ser-btn"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                                     </td>
                                 </tr>
+                                -->
                             </tbody>
                         </table>
                     </div>

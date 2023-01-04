@@ -201,6 +201,13 @@ const submitBtnSer = newSerForm.querySelector(".submit-btn");
 const cancelBtnSer = newSerForm.querySelector(".cancel-btn");
 const newSerBtn = document.querySelector(".new-service-btn");
 const numServices = document.querySelector(".num-ser");
+//update form elements
+const updateSerForm = document.querySelector(".update-ser-form");
+const newSerName = document.querySelector("#newServiceName");
+const newSerPrivate = document.querySelector("#newPrivatePrice");
+const newSerPv = document.querySelector("#newPvPrice");
+const oldServiceId = document.querySelector("#serviceId");
+const cancelUpdaterSer = updateSerForm.querySelector(".cancel-btn");
 
 //Open and show the services tab
 serviceTab.addEventListener("click", () => {
@@ -271,15 +278,23 @@ function loadServices() {
         deleteSerBtn.forEach(deleteBtn => {
             deleteBtn.addEventListener("click", () => {
                 serId = (((deleteBtn.parentElement).parentElement).children[0].innerText);
-                let deleteService = {
-                    idSer: serId,
-                    name: "",
-                    privatePrice: "",
-                    pvPrice: ""
-                }
-
-                $.post('http://localhost:3000/services', deleteService, (res, status) =>{
-                    console.log(`Status: ${status}, Message: The service has been deleted\n`);
+                
+                $.ajax({
+                    url: 'http://localhost:3000/services',
+                    type: 'DELETE',
+                    dataType: 'json',
+                    data : {
+                        idSer: serId,
+                        name: "",
+                        privatePrice: "",
+                        pvPrice: ""
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(response) {
+                        console.log(response);
+                    }
                 });
 
                 popUpContainer.classList.remove("opacity-0", "pointer-events-none");
@@ -293,12 +308,23 @@ function loadServices() {
                 }, 2000); 
             })
         });
-
-        //Get all edit btns 
+        
+        //Get all edit btns
         const editSerBtn = document.querySelectorAll(".edit-ser-btn");
         editSerBtn.forEach(editBtn => {
             editBtn.addEventListener("click", () => {
                 serId = (((editBtn.parentElement).parentElement).children[0].innerText);
+                const nameSerRow = (((editBtn.parentElement).parentElement).children[1].innerText);
+                const privatePriceRow = (((editBtn.parentElement).parentElement).children[2].innerText);
+                const pvPriceRow = (((editBtn.parentElement).parentElement).children[3].innerText);
+
+                //Add the values to the update form
+                newSerName.value = nameSerRow;
+                newSerPrivate.value = privatePriceRow;
+                newSerPv.value = pvPriceRow;
+                oldServiceId.value = serId;
+                //show the update service form
+                updateSerForm.classList.remove("hidden");
                 /*
                 let deleteService = {
                     idSer: serId,
@@ -309,18 +335,7 @@ function loadServices() {
 
                 $.post('http://localhost:3000/services', deleteService, (res, status) =>{
                     console.log(`Status: ${status}, Message: The service has been deleted\n`);
-                });
-
-                popUpContainer.classList.remove("opacity-0", "pointer-events-none");
-                popUpFail.innerText = "The Service entry has been deleted";
-
-                setTimeout(function(){
-                    removeSerRows();
-                    loadServices();
-                    popUpContainer.classList.add("opacity-0", "pointer-events-none");
-                    popUpFail.innerText = "";
-                }, 2000); 
-                */
+                });*/
             })
         });
 
@@ -364,6 +379,11 @@ cancelBtnSer.addEventListener("click", () => {
 })
 newSerBtn.addEventListener("click", () => {
     newSerForm.classList.remove("hidden");
+})
+
+//Update service from cancel btn
+cancelUpdaterSer.addEventListener("click", () => {
+    updateSerForm.classList.add("hidden");
 })
 
 /****** success and fail pop ups ******/
