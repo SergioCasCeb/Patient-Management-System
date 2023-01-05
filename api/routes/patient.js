@@ -36,9 +36,8 @@ routerPatient.post('/', (req, res, next) =>{
         mail: req.body.mail
     };
 
-    //TODO
+    //Saving the new entry in the entries service variable 
     entriesPatient = newPatient;
-    res.status(200).json({ msg: 'The new patient has been saved successfully'});
 
     //Access json list to compare with new patient
     let patJson = fs.readFileSync("./src/patients.json", "utf-8");
@@ -72,6 +71,7 @@ routerPatient.post('/', (req, res, next) =>{
                 //Writting it in the json file
                 patJson = JSON.stringify(patients, null, 2);
                 fs.writeFileSync("./src/patients.json", patJson, "utf-8");
+                res.status(200).json({ msg: 'The patient has been updated successfully'});
             }
         });
     }
@@ -80,12 +80,12 @@ routerPatient.post('/', (req, res, next) =>{
         patients.push(entriesPatient);
         patJson = JSON.stringify(patients, null, 2);
         fs.writeFileSync("./src/patients.json", patJson, "utf-8");
+        res.status(200).json({ msg: 'The new patient has been saved successfully'});
     } 
 });
 
 //delete request
 routerPatient.delete('/', (req, res, next) =>{
-    res.status(200).json({ msg: 'This was a delete request for the patient list'});
     
     let deletePatient = {
         id: req.body.id,
@@ -122,6 +122,7 @@ routerPatient.delete('/', (req, res, next) =>{
             //Writting it in the json file
             patJson = JSON.stringify(cleanedList, null, 2);
             fs.writeFileSync("./src/patients.json", patJson, "utf-8");
+            res.status(200).json({ msg: 'This patient has been deleted from the list'});
         }
     });
 });

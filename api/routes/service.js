@@ -8,7 +8,6 @@ var entriesService;
 //Get request
 routerService.get('/', (req, res, next) => {
     //getting all the entries as json format
-    // res.status(200).json(entriesService);
     let data = fs.readFileSync('./src/services.json');
     let serviceList = JSON.parse(data);
     res.status(200).json(serviceList);
@@ -25,11 +24,9 @@ routerService.post('/', (req, res, next) =>{
         privatePrice: req.body.privatePrice,
         pvPrice: req.body.pvPrice
     };
-    console.log(newService);
 
-    //TODO
+    //Saving the new entry in the entries service variable 
     entriesService = newService;
-    res.status(200).json({ msg: 'The new service has been saved successfully'});
 
     //Access json list to compare with new service
     let serJson = fs.readFileSync("./src/services.json", "utf-8");
@@ -63,6 +60,9 @@ routerService.post('/', (req, res, next) =>{
                 //Writting it in the json file
                 serJson = JSON.stringify(services, null, 2);
                 fs.writeFileSync("./src/services.json", serJson, "utf-8");
+
+                //sending a response msg when updated successfully
+                res.status(200).json({ msg: 'The service has been updated successfully'});
             }
         });
     }else{
@@ -71,12 +71,14 @@ routerService.post('/', (req, res, next) =>{
         console.log(services);
         serJson = JSON.stringify(services, null, 2);
         fs.writeFileSync("./src/services.json", serJson, "utf-8");
+
+        //sending a response msg when added successfully
+        res.status(200).json({ msg: 'The new service has been saved successfully'});
     }
 });
 
 //Delete request
 routerService.delete('/', (req, res, next) =>{
-    res.status(200).json({ msg: 'This was a delte request for the service list'});
     
     let newService = {
         idSer: req.body.idSer,
@@ -107,6 +109,7 @@ routerService.delete('/', (req, res, next) =>{
             //Writting it in the json file
             serJson = JSON.stringify(cleanedList, null, 2);
             fs.writeFileSync("./src/services.json", serJson, "utf-8");
+            res.status(200).json({ msg: 'This service has been deleted successfully'});
         }
     });
 });

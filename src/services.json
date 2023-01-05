@@ -19,50 +19,44 @@
   },
   {
     "idSer": "4",
-    "name": "Somehting service",
+    "name": "Weight management service",
     "privatePrice": "30",
     "pvPrice": "35"
   },
   {
     "idSer": "5",
-    "name": "Another service",
-    "privatePrice": "50",
-    "pvPrice": "55"
+    "name": "Flu vaccination",
+    "privatePrice": "10",
+    "pvPrice": "25"
   },
   {
     "idSer": "6",
-    "name": "New service 6",
-    "privatePrice": "20",
-    "pvPrice": "35"
+    "name": "Emergency contraception",
+    "privatePrice": "30",
+    "pvPrice": "50"
   },
   {
     "idSer": "8",
-    "name": "New service 8",
+    "name": "Hypertension management",
     "privatePrice": "45",
     "pvPrice": "95"
   },
   {
     "idSer": "9",
-    "name": "New service 9",
+    "name": "Repeat dispensing",
     "privatePrice": "5",
     "pvPrice": "25"
   },
   {
     "idSer": "10",
-    "name": "new service 10",
+    "name": "Homecare service",
     "privatePrice": "45",
     "pvPrice": "105"
   },
   {
     "idSer": "11",
-    "name": "service 11",
+    "name": "Diabetes management",
     "privatePrice": "20",
     "pvPrice": "60"
-  },
-  {
-    "idSer": "12",
-    "name": "service 12",
-    "privatePrice": "5",
-    "pvPrice": "14"
   }
 ]

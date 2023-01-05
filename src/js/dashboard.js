@@ -203,17 +203,22 @@ function loadPatients() {
                     if(this.status == 200){
                         let patients = JSON.parse(this.responseText);
                         patients.forEach(patient => {
+                            
                             if(patId == patient.id){
                                 oldPatientId.value = patId;
                                 newPatFName.value = patient.fname;
                                 newPatLName.value = patient.lname;
                                 newPatGender.value = patient.gender;
-                                newPatDate.value = patient.bdate;
                                 newPatAddress.value = patient.address;
                                 newPatPhone.value = patient.phoneNum;
                                 newPatMail.value = patient.mail;
                                 newPatInsurance.value = patient.insurance;
                                 newPatService.value = patient.service;
+
+                                //Formating the date to allow the input to read it
+                                let dateValues = (patient.bdate).split(".");
+                                let formatedDate = dateValues[2] + "-" + dateValues[1].toString().padStart(2, '0') + "-" + dateValues[0].toString().padStart(2, '0');
+                                newPatDate.value = formatedDate;
                             }
                         });
                     }   
