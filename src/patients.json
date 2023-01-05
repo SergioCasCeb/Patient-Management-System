@@ -118,5 +118,17 @@
     "address": "adress 11",
     "phoneNum": "01746083746",
     "mail": "sergio@gmail.com"
+  },
+  {
+    "id": "11",
+    "fname": "pat",
+    "lname": "11",
+    "gender": "female",
+    "bdate": "4.12.2022",
+    "insurance": "private",
+    "service": "1",
+    "address": "a",
+    "phoneNum": "a",
+    "mail": "sergio@gmail.com"
   }
 ]

@@ -195,6 +195,7 @@ function loadPatients() {
         const editPatBtn = document.querySelectorAll(".edit-pat-btn");
         editPatBtn.forEach(editBtn => {
             editBtn.addEventListener("click", () => {
+                populateService(newPatService);
                 patId = (((editBtn.parentElement).parentElement).children[0].innerText);
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'patients.json', true);
@@ -257,12 +258,14 @@ function loadPatients() {
     xhr.send();
 }
 
-//New patient form submit and cancel  buttons
+//New patient form open and cancel  buttons
 cancelBtnPat.addEventListener("click", () => {
     newPatForm.classList.add("hidden");
 })
 newPatBtn.addEventListener("click", () => {
     newPatForm.classList.remove("hidden");
+    const serviceInput = document.querySelector("#serviceNum");
+    populateService(serviceInput);
 })
 
 //Update patient form cancel btn
@@ -513,4 +516,30 @@ function showProfile(id){
         }   
     }
     xhrPat.send();
+}
+
+/****** function to populat the service input ******/
+function populateService(patientForm){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'services.json', true);
+    xhr.onload = function() {
+        if(this.status == 200){
+            let services = JSON.parse(this.responseText);
+            let patientOptions = patientForm.children;
+
+            for(let i = 0; i < services.length; i++){ 
+                patientForm.removeChild(patientForm.lastChild);
+                if(patientOptions.length == 1){
+                    services.forEach(service => {
+                        let option = document.createElement("option");
+                        option.text = service.name;
+                        option.value = service.idSer;
+                        patientForm.add(option);
+                    })  
+                    break;
+                }
+            }
+        }   
+    }
+    xhr.send();
 }

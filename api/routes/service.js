@@ -25,6 +25,7 @@ routerService.post('/', (req, res, next) =>{
         privatePrice: req.body.privatePrice,
         pvPrice: req.body.pvPrice
     };
+    console.log(newService);
 
     //TODO
     entriesService = newService;
@@ -40,7 +41,7 @@ routerService.post('/', (req, res, next) =>{
     let updateEntry = false;
 
     for(let i = 0; i < services.length; i++){
-        if(newService.id == services[i].id){
+        if(newService.idSer == services[i].idSer){
             updateEntry = true;
             break;   
         }
@@ -67,6 +68,7 @@ routerService.post('/', (req, res, next) =>{
     }else{
         //Adding the new entry and updating the list
         services.push(entriesService);
+        console.log(services);
         serJson = JSON.stringify(services, null, 2);
         fs.writeFileSync("./src/services.json", serJson, "utf-8");
     }
