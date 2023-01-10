@@ -98,12 +98,12 @@ function loadPatients() {
                 <td class="border-y-2 border-gray-blue-400 py-2">${patients[i].insurance}</td>
                 <td class="border-y-2 border-gray-blue-400 py-2">${patients[i].service}</td>
                 <td class="border-y-2 border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                    <button class="mr-2 group edit-pat-btn"><i class="fa-solid fa-user-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                    <button class="group delete-pat-btn"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="mr-2 group edit-pat-btn py-3 md:py-2 lg:py-1"><i class="fa-solid fa-user-pen px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="group delete-pat-btn py-3 md:py-2 lg:py-1"><i class="fa-solid fa-trash-can px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                     <div class="confirm-pat-container flex flex-row items-center justify-center flex-wrap hidden">
                         <p class="text-dark-800 text-base w-full mb-1">This entry will be deleted permanently!</p>
-                        <button class="w-[49%] group confirm-delete-pat py-1 px-2 mr-2 text-base rounded-lg bg-success-400 text-light-400 hover:bg-success-600 duration-300">Confirm</button>
-                        <button class="w-[49%] group cancel-delete-pat py-1 px-2 text-base rounded-lg bg-danger-400 text-light-400 hover:bg-danger-600 duration-300">Cancel</button>
+                        <button class="w-[49%] group confirm-delete-pat py-3 md:py-2 lg:py-1 px-2 mr-2 text-base rounded-lg bg-success-400 text-light-400 hover:bg-success-600 duration-300">Confirm</button>
+                        <button class="w-[49%] group cancel-delete-pat py-3 md:py-2 lg:py-1 px-2 text-base rounded-lg bg-danger-400 text-light-400 hover:bg-danger-600 duration-300">Cancel</button>
                     </div>
                 </td>
                 <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 py-2">
@@ -347,8 +347,8 @@ function loadServices() {
                 <td class="border-y-2 border-gray-blue-400 py-2">${services[i].privatePrice}</td>
                 <td class="border-y-2 border-gray-blue-400 py-2">${services[i].pvPrice}</td>
                 <td class="border-y-2 border-r-2 rounded-r-lg border-gray-blue-400 flex flex-row justify-center items-center py-2">
-                    <button class="mr-2 group edit-ser-btn"><i class="fa-solid fa-file-pen py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
-                    <button class="group delete-ser-btn"><i class="fa-solid fa-trash-can py-1 px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="mr-2 group edit-ser-btn py-3 md:py-2 lg:py-1"><i class="fa-solid fa-file-pen px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
+                    <button class="group delete-ser-btn py-3 md:py-2 lg:py-1"><i class="fa-solid fa-trash-can px-2 text-xl group-hover:text-primary-600 duration-300"></i></button>
                 </td>
                 `;
                 tableServices.append(tr); 
